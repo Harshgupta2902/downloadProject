@@ -36,3 +36,28 @@
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+
+<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.9.2/tailwind.min.css"> -->
+    <!-- Small CSS to Hide elements at 1520px size -->
+    <style>
+        @media(max-width:1520px) {
+            .left-svg {
+                display: none;
+            }
+        }
+
+        /* small css for the mobile nav close */
+        #nav-mobile-btn.close span:first-child {
+            transform: rotate(45deg);
+            top: 4px;
+            position: relative;
+            background: #a0aec0;
+        }
+
+        #nav-mobile-btn.close span:nth-child(2) {
+            transform: rotate(-45deg);
+            margin-top: 0px;
+            background: #a0aec0;
+        }
+    </style>

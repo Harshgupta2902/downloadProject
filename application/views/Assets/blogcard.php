@@ -1,7 +1,4 @@
-<div class="c-scrollPercent">
-  <div class="c-pageFrontDoor">
-    <div class="c-trackScroll">
-      <div class="c-pageFrontDoor_topStories g-grid-container u-grid-columns">
+<div class="c-pageFrontDoor_topStories g-grid-container u-grid-columns">
         <div class="lg:u-col-9 md:u-col-4 sm:u-col-2 u-grid-full-row">
           <div class="c-listingPromoStories u-grid u-grid-columns">
             <div section="top_stories|pos1" class="c-listingPromoStories_mainItem">
@@ -70,37 +67,3 @@
           </div>
         </div>
       </div>
-      <hr>
-
-      <!-- tabbar data  -->
-
-      <?php $this->load->view('Assets/tabs') ?>
-
-
-
-    </div>
-  </div>
-
-
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-<script>
-  function showData(platform) {
-    // Hide all tab contents
-    document.querySelectorAll('.tab-content').forEach(tabContent => {
-      tabContent.classList.add('hidden');
-    });
-
-    // Show the selected tab content
-    const selectedTabContent = document.getElementById(`${platform}-data`);
-    if (selectedTabContent) {
-      selectedTabContent.classList.remove('hidden');
-    }
-  }
-</script>
