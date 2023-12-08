@@ -45,12 +45,10 @@
                                             <span class="whitespace-nowrap"><?php echo $subnavItem["subnav_title"]; ?></span>
                                         </a>
                                     </li>
-                                <?php
-                                 endforeach; ?>
+                                <?php endforeach; ?>
                             </ul>
                         </li>
-                    <?php
-            endforeach; ?>
+                    <?php endforeach; ?>
                 </ul>
                
             </nav>

@@ -19,8 +19,6 @@ class Welcome extends CI_Controller {
 		$finalData['mainNav'] = $this->GetQuery->getNavData();
 		$finalData['blogs'] = $this->GetQuery->getBlogs();
 		$finalData['tabCard'] = $this->GetQuery->tabCard('App');
-		// echo "<pre>";
-		// print_r($finalData['tabCard']);
 		$this->load->view('index', $finalData);
 	}
 		
@@ -29,17 +27,35 @@ class Welcome extends CI_Controller {
 		$cleanedText = str_replace('-', ' ', $originalText);
 		$finalData['mainNav'] = $this->GetQuery->getNavData(); 
 		$finalData['softData'] = $this->GetQuery->getJoinedSoftwareData($cleanedText);
-		// echo "<pre>";
-		// print_r($finalData['softData']);
 		$this->load->view('product', $finalData);
 	}
 
     public function Blog($id){
 		$finalData['mainNav'] = $this->GetQuery->getNavData();
         $finalData['blogData'] = $this->GetQuery->getBlogData($id);
-        $this->load->view('Assets/blog', $finalData);
+        $this->load->view('blog', $finalData);
     }
 	
+    public function createBlog(){
+        $this->load->view('Assets/createBlog');
+    }
+
+    public function save_blog() {
+        $data = array(
+            'title' => $this->input->post('title'),
+            'content' => $this->input->post('content'),
+            'category' => $this->input->post('category'),
+            'image' => $this->input->post('image'),
+        );
+
+        $blog_id = $this->GetQuery->save_blog($data);
+
+        if ($blog_id) {
+            redirect('Welcome/createBlog');
+        } else {
+            redirect('Welcome/createBlog');
+        }
+    }
 
 	public function addSoftware() {
         $this->load->helper('form');
@@ -80,25 +96,7 @@ class Welcome extends CI_Controller {
 
         }
     }
-    public function createBlog(){
-        $this->load->view('Assets/createBlog');
-    }
+    
 
    
-    public function save_blog() {
-        $data = array(
-            'title' => $this->input->post('title'),
-            'content' => $this->input->post('content'),
-            'category' => $this->input->post('category'),
-            'image' => $this->input->post('image'),
-        );
-
-        $blog_id = $this->GetQuery->save_blog($data);
-
-        if ($blog_id) {
-            redirect('Welcome/createBlog');
-        } else {
-            redirect('Welcome/createBlog');
-        }
-    }
 }
