@@ -7,22 +7,14 @@
 </head>
 
 <body>
-
-
-
-
    <div class="flex items-center justify-center p-12">
       <div class="mx-auto w-full max-w-[550px]">
-
-
-         <!-- <?php echo validation_errors(); ?> -->
-
-            <?php echo form_open('Welcome/addSoftware'); ?>
+      <?php echo form_open('Welcome/addSoftware'); ?>
          <div class="mb-5">
             <label for="title" class="mb-3 block text-base font-medium text-[#07074D]">
                Title
             </label>
-            <input type="text" name="title" id="title" placeholder="Enter Name of Software"
+            <input required type="text" name="title" id="title" placeholder="Enter Name of Software"
                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
          </div>
          <div class="mb-5">
@@ -41,7 +33,7 @@
             <label for="logo" class="mb-3 block text-base font-medium text-[#07074D]">
                Logo
             </label>
-            <input type="text" name="logo" id="logo" placeholder="Enter Logo"
+            <input required type="text" name="logo" id="logo" placeholder="Enter Logo"
                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
          </div>
 
@@ -50,7 +42,7 @@
             <label for="download_url" class="mb-3 block text-base font-medium text-[#07074D]">
                Download Url
             </label>
-            <input type="text" name="download_url" id="download_url" placeholder="Enter Download url"
+            <input required type="text" name="download_url" id="download_url" placeholder="Enter Download url"
                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
          </div>
 
@@ -59,9 +51,28 @@
             <label for="company" class="mb-3 block text-base font-medium text-[#07074D]">
                Company
             </label>
-            <input type="text" name="company" id="company" placeholder="Enter Company Name"
+            <input required type="text" name="company" id="company" placeholder="Enter Company Name"
                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
          </div>
+
+
+         <div class="mb-5">
+            <label for="released_date" class="mb-3 block text-base font-medium text-[#07074D]">
+            Released Date
+            </label>
+            <input required type="text" name="released_date" id="released_date" placeholder="Enter Released Date"
+               class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+         </div>
+
+
+         <div class="mb-5">
+            <label for="version" class="mb-3 block text-base font-medium text-[#07074D]">
+               Version
+            </label>
+            <input required type="text" name="version" id="version" placeholder="Enter Version"
+               class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md" />
+         </div>
+
 
          <div class="mb-5">
             <label for="free" class="mb-3 block text-base font-medium text-[#07074D]">
@@ -89,21 +100,34 @@
          </div>
 
          <div class="mb-5">
-            <label for="specifications" class="mb-3 block text-base font-medium text-[#07074D]">
-               Specifications
+            <label for="overview" class="mb-3 block text-base font-medium text-[#07074D]">
+               Overview
             </label>
-            <textarea type="text" rows="4" name="specifications" id="specifications" placeholder="Enter Specifications"
+            <textarea required type="text" rows="4" name="overview" id="overview" placeholder="Enter overview"
                class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
          </div>
 
          <div class="mb-5">
-            <label for="description" class="mb-3 block text-base font-medium text-[#07074D]">
-               Description
+            <label for="features" class="mb-3 block text-base font-medium text-[#07074D]">
+               Features
             </label>
-            <textarea type="text" rows="4" name="description" id="description" placeholder="Enter Description"
+            <textarea required type="text" rows="4" name="features" id="features" placeholder="Enter Features"
                class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
          </div>
-
+         <div class="mb-5">
+            <label for="requirement" class="mb-3 block text-base font-medium text-[#07074D]">
+            Requirement
+            </label>
+            <textarea required type="text" rows="4" name="requirement" id="requirement" placeholder="Enter Requirement"
+               class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+         </div>
+         <div class="mb-5">
+            <label for="description" class="mb-3 block text-base font-medium text-[#07074D]">
+            Description
+            </label>
+            <textarea required type="text" rows="4" name="description" id="description" placeholder="Enter Description"
+               class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"></textarea>
+         </div>
          <?php echo validation_errors('<p class="text-red-500">', '</p>'); ?>
 
          <div>

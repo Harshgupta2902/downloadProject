@@ -19,6 +19,8 @@ class Welcome extends CI_Controller {
 		$finalData['mainNav'] = $this->GetQuery->getNavData();
 		$finalData['blogs'] = $this->GetQuery->getBlogs();
 		$finalData['tabCard'] = $this->GetQuery->tabCard('App');
+        // echo "<pre>";
+        // print_r($finalData['tabCard']);
 		$this->load->view('index', $finalData);
 	}
 		
@@ -27,6 +29,8 @@ class Welcome extends CI_Controller {
 		$cleanedText = str_replace('-', ' ', $originalText);
 		$finalData['mainNav'] = $this->GetQuery->getNavData(); 
 		$finalData['softData'] = $this->GetQuery->getJoinedSoftwareData($cleanedText);
+        // echo "<pre>";
+        // print_r($finalData['softData']);
 		$this->load->view('product', $finalData);
 	}
 
@@ -66,18 +70,24 @@ class Welcome extends CI_Controller {
         $this->form_validation->set_rules('download_url', 'Download URL', 'required');
         $this->form_validation->set_rules('company', 'Company', 'required');
         $this->form_validation->set_rules('free', 'Free', 'required');
-        $this->form_validation->set_rules('specifications', 'Specifications', 'required');
-        $this->form_validation->set_rules('description', 'Description', 'required');
+        $this->form_validation->set_rules('overview', 'overview', 'required');
+        $this->form_validation->set_rules('features', 'features', 'required');
+        $this->form_validation->set_rules('requirement', 'requirement', 'required');
         $this->form_validation->set_rules('category', 'Category', 'required');
 		$data = array(
             'name' => $this->input->post('title'),
             'logo' => $this->input->post('logo'),
             'company' => $this->input->post('company'),
             'free' => $this->input->post('free'),
-            'specs' => $this->input->post('specifications'),
-            'description' => $this->input->post('description'),
+            'overview' => $this->input->post('overview'),
+            'features' => $this->input->post('features'),
             'downloadurl' => $this->input->post('download_url'),
+            'requirement' => $this->input->post('requirement'),
             'category' => $this->input->post('category'),
+            'category' => $this->input->post('category'),
+            'description' => $this->input->post('description'),
+            'version' => $this->input->post('version'),
+            'released_date' => $this->input->post('released_date'),
         );
         $data1 = array(
             'name' => $this->input->post('title'),

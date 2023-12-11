@@ -404,7 +404,7 @@
             }
 
             [type=text]:invalid,select:invalid,textarea:invalid {
-                border: 1px solid #eb0036;
+                /* border: 1px solid #eb0036; */
                 color: #eb0036
             }
 
