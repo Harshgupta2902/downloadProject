@@ -2,7 +2,7 @@
         <div
             class="container flex items-center justify-center h-full max-w-6xl px-8 mx-auto sm:justify-between xl:px-0">
 
-            <a href="/" class="relative flex items-center inline-block h-5 h-full font-black leading-none">
+            <a href="<?php echo base_url() ?>" class="relative flex items-center inline-block h-5 h-full font-black leading-none">
                 <svg class="w-auto h-6 text-indigo-600 fill-current" viewBox="0 0 194 116"
                     xmlns="http://www.w3.org/2000/svg">
                     <g fill-rule="evenodd">
@@ -19,7 +19,7 @@
                     <?php foreach ($mainNav as $mainNav): ?>
                         <li class="p-4 lg:px-8 relative flex items-center space-x-1" x-data="{ open: false }"
                         @mouseenter="open = true" @mouseleave="open = false">
-                        <a class="text-slate-800 hover:text-slate-900" href="#0" :aria-expanded="open"><?php echo $mainNav["nav_title"]; ?></a>
+                        <a class="text-slate-800 hover:text-slate-900" href="" :aria-expanded="open"><?php echo $mainNav["nav_title"]; ?></a>
                         <button class="shrink-0 p-1" :aria-expanded="open" @click.prevent="open = !open">
                             <span class="sr-only">Show submenu for "<?php echo $mainNav["nav_title"]; ?>"</span>
                             <svg class="w-3 h-3 fill-slate-500" xmlns="http://www.w3.org/2000/svg" width="12" height="12">
@@ -36,7 +36,7 @@
                             @focusout="await $nextTick();!$el.contains($focus.focused()) && (open = false)">
                                 <?php foreach ($mainNav["subnav"] as $subnavItem): ?>
                                     <li>
-                                    <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="<?php echo base_url('Welcome/product/') . urlencode(str_replace(' ', '-', $subnavItem["subnav_title"])); ?>">
+                                    <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $subnavItem["subnav_title"])); ?>">
                                             <div class="flex items-center justify-center bg-white border border-slate-200 rounded shadow-sm h-7 w-7 shrink-0 mr-3">
                                                 <svg class="fill-indigo-500" xmlns="http://www.w3.org/2000/svg" width="12" height="12">
                                                     <!-- Add your SVG path here -->

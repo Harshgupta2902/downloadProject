@@ -73,7 +73,7 @@
                     <!---->
                 </div>
                 <!-- <a href="<?php echo $windows->downloadurl ?>" class="c-productCard_link"> -->
-                <a href="<?php echo base_url('Welcome/product/') . urlencode(str_replace(' ', '-', $windows->name)); ?>" class="c-productCard_link">
+                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $windows->name)); ?>" class="c-productCard_link">
                     <?php echo $windows->name ?>
                 </a>
             </div>
@@ -111,7 +111,7 @@
                     </div>
                     <!---->
                 </div>
-                <a href="<?php echo base_url('Welcome/product/') . urlencode(str_replace(' ', '-', $mac->name)); ?>" class="c-productCard_link">
+                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $mac->name)); ?>" class="c-productCard_link">
                     <?php echo $mac->name ?>
                 </a>
             </div>
@@ -147,7 +147,7 @@
                     </div>
                     <!---->
                 </div>
-                <a href="<?php echo base_url('Welcome/product/') . urlencode(str_replace(' ', '-', $Ios->name)); ?>" class="c-productCard_link">
+                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $Ios->name)); ?>" class="c-productCard_link">
                     <?php echo $Ios->name ?>
                 </a>
             </div>
@@ -183,7 +183,7 @@
                     </div>
                     <!---->
                 </div>
-                <a href="<?php echo base_url('Welcome/product/') . urlencode(str_replace(' ', '-', $Android->name)); ?>" class="c-productCard_link">
+                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $Android->name)); ?>" class="c-productCard_link">
                     <?php echo $Android->name ?>
                 </a>
             </div>

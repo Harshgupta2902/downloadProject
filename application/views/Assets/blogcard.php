@@ -2,7 +2,7 @@
         <div class="lg:u-col-9 md:u-col-4 sm:u-col-2 u-grid-full-row">
           <div class="c-listingPromoStories u-grid u-grid-columns">
             <div section="top_stories|pos1" class="c-listingPromoStories_mainItem">
-              <a href="<?php echo base_url('Welcome/Blog/') . urlencode($blogs['latest']['id']); ?>" target="_blank">
+              <a href="<?php echo base_url('blog/') . urlencode($blogs['latest']['id']); ?>" target="_blank">
                 <div class="c-listingPromoStories_image">
                   <div>
                     <picture class="c-cmsImage">
@@ -23,7 +23,7 @@
             <div class="c-listingPromoStories_subItemWrapper u-grid u-grid-columns">
               <?php foreach ($blogs['latest2'] as $blog2) { ?>
               <div section="top_stories|pos2" class="c-listingPromoStories_subItem g-inner-spacing-bottom-large-fluid">
-                <a href=" " target="_blank">
+                <a href="<?php echo base_url('blog/') . urlencode($blog2['id']); ?>" target="_blank">
                   <div class="c-listingPromoStories_image g-outer-spacing-bottom-medium">
                     <div>
                       <picture class="c-cmsImage">
@@ -57,7 +57,7 @@
                   <?php echo $blogs4['category'] ?>
                 </div>
                 <h2 class="c-listingLinkStories_head g-text-small g-text-normal">
-                  <a href="<?php echo base_url('Welcome/Blog/') . urlencode($blogs4['id']); ?>" target="_blank">
+                  <a href="<?php echo base_url('blog/') . urlencode($blogs4['id']); ?>" target="_blank">
                     <?php echo $blogs4['title'] ?>
                   </a>
                 </h2>

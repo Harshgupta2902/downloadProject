@@ -34,7 +34,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('product', $finalData);
 	}
 
-    public function Blog($id){
+    public function blog($id){
 		$finalData['mainNav'] = $this->GetQuery->getNavData();
         $finalData['blogData'] = $this->GetQuery->getBlogData($id);
         $this->load->view('blog', $finalData);
