@@ -1,5 +1,5 @@
 
-<footer class="px-4 pt-12 pb-8 text-white bg-white border-t border-gray-200">
+<footer class="px-4 pt-12 pb-8 text-white border-t border-gray-200">
         <div class="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">
             <div class="w-full pl-12 mr-4 text-left lg:w-1/4 sm:text-center sm:pl-0 lg:text-left">
                 <a href="/"
