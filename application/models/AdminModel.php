@@ -77,4 +77,17 @@ class AdminModel extends CI_Model {
         return $query->num_rows();
     }
 
+
+
+	public function get_count() {
+        return $this->db->count_all('blogs');
+    }
+
+	public function getBlog($limit, $start) {
+		$this->db->limit($limit, $start);
+		$this->db->order_by('id', 'DESC'); // Replace 'your_column_name' with the actual column name you want to order by
+		$query = $this->db->get("blogs");
+		return $query->result();
+	}
+	
 }

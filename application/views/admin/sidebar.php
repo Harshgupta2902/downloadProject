@@ -1,7 +1,7 @@
 <aside class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 " id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href="<?php echo base_url('dashboard') ?>" target="_blank">
+      <a class="navbar-brand m-0" href="<?php echo base_url('dashboard') ?>" >
         <svg class="w-25 h-25 text-indigo-10 fill-current" viewBox="0 0 194 116" xmlns="http://www.w3.org/2000/svg">
             <g fill-rule="evenodd">
                 <path d="M96.869 0L30 116h104l-9.88-17.134H59.64l47.109-81.736zM0 116h19.831L77 17.135 67.088 0z"></path>
@@ -32,7 +32,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link <?php echo $active == 'blogs' ? 'active' : ''; ?>" href="<?php echo base_url('blogs') ?>">
+          <a class="nav-link <?php echo $active == 'blogs' ? 'active' : ''; ?>" href="<?php echo base_url('blogs/1') ?>">
             <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
             </div>

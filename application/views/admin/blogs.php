@@ -39,34 +39,42 @@
                       <td>
                         <div class="d-flex px-2 py-1">
                           <div>
-                            <img src="<?php echo $blog['image'] ?>" class="avatar avatar-sm me-3" alt="user1">
+                            <img src="<?php echo $blog->image ?>" class="avatar avatar-sm me-3" alt="user1">
                           </div>
                           <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm"><?php echo $blog['title'] ?></h6>
+                            <h6 class="mb-0 text-sm"><?php echo $blog->title ?></h6>
                           </div>
                         </div>
                       </td>
                       
                       <td class="align-middle text-center text-sm">
-                        <span class="badge badge-sm bg-gradient-success"><?php echo $blog['category'] ?></span>
+                        <span class="badge badge-sm bg-gradient-success"><?php echo $blog->category ?></span>
                       </td>
                       <td class="align-middle text-center">
-                        <span class="text-secondary text-xs font-weight-bold"><?php echo $blog['timestamp'] ?></span>
+                        <span class="text-secondary text-xs font-weight-bold"><?php echo $blog->timestamp ?></span>
                       </td>
                       <td class="align-middle">
-                        <a href="<?php echo base_url('editBlog/').urlencode($blog['id']) ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        <a href="<?php echo base_url('editBlog/').urlencode($blog->id) ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Edit
                         </a>
                       </td>
                       <td class="align-middle">
-                        <a href="<?php echo base_url('deleteBlog/').urlencode($blog['id']) ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                        <a href="<?php echo base_url('deleteBlog/').urlencode($blog->id) ?>" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
                           Delete
                         </a>
                       </td>
                     </tr>
                     <?php } ?> 
                   </tbody>
+                  
                 </table>
+                <div class="pagination-links mt-4">
+                      <nav aria-label="Page navigation example">
+                          <ul class="pagination">
+                              <?php echo $links; ?>
+                          </ul>
+                      </nav>
+                  </div>
               </div>
             </div>
           </div>
@@ -78,6 +86,9 @@
   </main>
   <!--   Core JS Files   -->
   <?php $this->load->view('admin/scripts') ?>
+
+
+
 </body>
 
 </html>

@@ -13,6 +13,7 @@ class Admin extends CI_Controller {
         $this->load->library('session'); // Load the session library
         $this->load->library('form_validation'); // Set rules for each field
         
+        $this->load->library("pagination");
 
     }
 
@@ -73,12 +74,24 @@ class Admin extends CI_Controller {
     }
 
     public function blogs() {
-        if ($this->session->userdata('user_id')) {
-            $blogs['blogs'] = $this->AdminModel->getBlogs();
-            $this->load->view('admin/blogs',$blogs);
-        } else {
-            redirect('login');
-        }   
+        $config = array();
+        $config["base_url"] = base_url() . "blogs";
+        $config["total_rows"] = $this->AdminModel->get_count();
+        $config["per_page"] = 12;
+        $config['first_url'] = base_url() . "blogs/1";
+        // $config["uri_segment"] = 2;
+
+        $this->pagination->initialize($config);
+
+        $page = ($this->uri->segment(1)) ? $this->uri->segment(1) : 0;
+
+        $data["links"] = $this->pagination->create_links();
+
+        $data['blogs'] = $this->AdminModel->getBlog($config["per_page"], $page);
+        // echo "<pre>";
+        // print_r($data);
+
+        $this->load->view('admin/blogs', $data);
     }
 
     public function deleteBlog($id) {

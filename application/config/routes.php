@@ -59,14 +59,14 @@ $route['login'] = 'Admin/login';
 $route['auth'] = 'Admin/auth';
 $route['dashboard'] = 'Admin/dashboard';
 $route['softwares'] = 'Admin/softwares';
-$route['blogs'] = 'Admin/blogs';
+$route['blogs/(:num)'] = 'Admin/blogs/1';
 
 
 $route['deleteBlog'] = 'Admin/deleteBlog';
 $route['createBlog'] = 'Admin/createBlog';
 $route['addSoftware'] = 'Admin/addSoftware';
 
-$route['editBlog/(:any)'] = 'Admin/editBlog/$1';
+$route['editBlog'] = 'Admin/editBlog';
 
 
 $route['logOut'] = 'Admin/logOut';
