@@ -102,10 +102,6 @@ class GetQuery extends CI_Model {
 		// print_r($finalarray);
 	}
    
-    public function save_blog($data) {
-        $this->db->insert('blogs', $data);
-        return $this->db->insert_id();
-    }
     public function getBlogData($id) {
         $this->db->select('*');
         $this->db->from('blogs');

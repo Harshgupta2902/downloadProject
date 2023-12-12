@@ -32,18 +32,49 @@ class AdminModel extends CI_Model {
 		$finalarray['Android']=$result[4];
         
         return $finalarray;
-		// echo "<pre>";
-		// print_r($finalarray);
 	}
 
     public function getBlogs() {
         $this->db->select('*');
         $this->db->from('blogs');
-        $this->db->order_by('id', 'DESC'); // Assuming 'id' is the primary key; replace it with the actual column you want to order by
+        $this->db->order_by('id', 'DESC');
         $query = $this->db->get();
         $result = $query->result_array();
         return $result;
     }
         
+	public function save_blog($data) {
+        $this->db->insert('blogs', $data);
+        return $this->db->insert_id();
+    }
+
+	public function updateBlog($blog_id, $data) {
+        $this->db->where('id', $blog_id);
+        $this->db->update('blogs', $data);
+    }
+
+
+
+
+
+	public function getTotalBlogs() {
+        $query = $this->db->get('blogs');
+        return $query->num_rows();
+    }
+
+	public function getTotalSoftwares() {
+        $query = $this->db->get('softdata');
+        return $query->num_rows();
+    }
+
+	public function getTotalUsers() {
+        $query = $this->db->get('user');
+        return $query->num_rows();
+    }
+
+	public function getTotalCategory() {
+        $query = $this->db->get('navbar');
+        return $query->num_rows();
+    }
 
 }

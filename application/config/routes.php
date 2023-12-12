@@ -63,4 +63,10 @@ $route['blogs'] = 'Admin/blogs';
 
 
 $route['deleteBlog'] = 'Admin/deleteBlog';
+$route['createBlog'] = 'Admin/createBlog';
+$route['addSoftware'] = 'Admin/addSoftware';
 
+$route['editBlog/(:any)'] = 'Admin/editBlog/$1';
+
+
+$route['logOut'] = 'Admin/logOut';

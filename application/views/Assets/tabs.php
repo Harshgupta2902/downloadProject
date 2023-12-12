@@ -179,7 +179,7 @@
                 </div>
                 <div class="c-productCard_footer u-flexbox-column g-outer-spacing-top-medium">
                     <div class="c-productCard_summary g-text-small g-color-gray70">
-                        <?php echo $windows->description ?>
+                        <?php echo $Android->description ?>
                     </div>
                     <!---->
                 </div>
