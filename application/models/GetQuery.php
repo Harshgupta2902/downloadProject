@@ -4,9 +4,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class GetQuery extends CI_Model {
 
     public function getNavData() {
-        $this->db->select('navbar.id AS nav_id, navbar.title AS nav_title, software.id AS subnav_id, software.name AS subnav_title');
+        $this->db->select('navbar.id AS nav_id, navbar.title AS nav_title, softdata.id AS subnav_id, softdata.name AS subnav_title');
         $this->db->from('navbar');
-        $this->db->join('software', 'navbar.id = software.relation', 'left');
+        $this->db->join('softdata', 'navbar.id = softdata.relation', 'left');
         $query = $this->db->get();
         $result = $query->result_array();
         $organizedData = [];
@@ -23,7 +23,6 @@ class GetQuery extends CI_Model {
                 ];
             }
 
-            // Check if the count of subnav entries for this navbar entry is less than 6
             if (count($organizedData[$navbarId]['subnav']) < 6) {
                 if ($subnavId !== null) {
                     $organizedData[$navbarId]['subnav'][] = [
@@ -32,16 +31,15 @@ class GetQuery extends CI_Model {
                     ];
                 }
             }
-        }
+        }   
 
         return array_values($organizedData);
     }
 
-    public function getJoinedSoftwareData($softwareName) {
-        $this->db->select('s.*, sd.*');
-        $this->db->from('software s');
-        $this->db->join('softdata sd', 's.name = sd.name', 'left');
-        $this->db->where('s.name', $softwareName);
+    public function getJoinedSoftwareData($id) {
+        $this->db->select('');
+        $this->db->from('softdata');
+        $this->db->where('id', $id);
         $query = $this->db->get();
         $result = $query->result_array();
     
@@ -71,36 +69,6 @@ class GetQuery extends CI_Model {
     
         return $organizedData;
     }
-
-    public function tabCard($type) {
-		$this->db->select('*');
-		$this->db->from('software');
-		$this->db->group_by('relation');
-		$query = $this->db->get();
-	
-		$result = array();
-		$finalarray=array();
-		foreach ($query->result() as $row) {
-			$this->db->select('*');
-			$this->db->from('softdata');
-			$this->db->join('software', 'softdata.name = software.name');
-			$this->db->where('software.relation', $row->relation);
-            $this->db->where('softdata.category', $type); // Add this line to filter by category
-			$this->db->limit(8);
-			$subquery = $this->db->get();
-			foreach ($subquery->result() as $subrow) {
-				$result[$row->relation][] = $subrow;
-			}
-		}
-		$finalarray['Windows']=$result[1];
-		$finalarray['Mac']=$result[2];
-		$finalarray['Ios']=$result[3];
-		$finalarray['Android']=$result[4];
-        
-        return $finalarray;
-		// echo "<pre>";
-		// print_r($finalarray);
-	}
    
     public function getBlogData($id) {
         $this->db->select('*');
@@ -111,4 +79,34 @@ class GetQuery extends CI_Model {
         return $result;
     }
     
+
+    public function getTabsData() {
+        $this->db->select('id, name, relation, logo, description, free');
+        $this->db->order_by('id', 'DESC'); 
+        $this->db->where('trending', '1'); 
+        $this->db->limit(8);
+        $query = $this->db->get('softdata');
+        return $query->result_array();
+    }
+
+    public function organize_tabs_by_relation($data) {
+        $organizedData = [];
+        foreach ($data as $record) {
+            $relation = $record['relation'];
+
+            if (!isset($organizedData[$relation])) {
+                $organizedData[$relation] = [];
+            }
+
+            $organizedData[$relation][] = $record;
+        }
+
+        $finalarray=array();
+		$finalarray['Windows']=$organizedData[1];
+		$finalarray['Mac']=$organizedData[2];
+		$finalarray['Ios']=$organizedData[3];
+		$finalarray['Android']=$organizedData[4];
+        
+        return $finalarray;
+    }
 }

@@ -59,7 +59,7 @@ $route['login'] = 'Admin/login';
 $route['auth'] = 'Admin/auth';
 $route['dashboard'] = 'Admin/dashboard';
 $route['softwares'] = 'Admin/softwares';
-$route['blogs/(:num)'] = 'Admin/blogs/1';
+$route['blogs'] = 'Admin/blogs';
 
 
 $route['deleteBlog'] = 'Admin/deleteBlog';

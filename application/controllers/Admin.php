@@ -65,7 +65,8 @@ class Admin extends CI_Controller {
 
     public function softwares() {
         if ($this->session->userdata('user_id')) {
-            $softwares['softwares'] = $this->AdminModel->getSoftwares();
+            $data = $this->AdminModel->getSoftwares();
+            $softwares['softwares'] = $this->AdminModel->organize_softwares_by_relation($data);
             $this->load->view('admin/softwares', $softwares);
         } else {
             redirect('login');
@@ -74,23 +75,7 @@ class Admin extends CI_Controller {
     }
 
     public function blogs() {
-        $config = array();
-        $config["base_url"] = base_url() . "blogs";
-        $config["total_rows"] = $this->AdminModel->get_count();
-        $config["per_page"] = 12;
-        $config['first_url'] = base_url() . "blogs/1";
-        // $config["uri_segment"] = 2;
-
-        $this->pagination->initialize($config);
-
-        $page = ($this->uri->segment(1)) ? $this->uri->segment(1) : 0;
-
-        $data["links"] = $this->pagination->create_links();
-
-        $data['blogs'] = $this->AdminModel->getBlog($config["per_page"], $page);
-        // echo "<pre>";
-        // print_r($data);
-
+       $data['blogs'] = $this->AdminModel->getBlog();
         $this->load->view('admin/blogs', $data);
     }
 
@@ -115,6 +100,8 @@ class Admin extends CI_Controller {
         $this->form_validation->set_rules('features', 'features', 'required');
         $this->form_validation->set_rules('requirement', 'requirement', 'required');
         $this->form_validation->set_rules('category', 'Category', 'required');
+        $trending = $this->input->post('trending');
+        $isTrend = ($trending === null) ? 0 : $trending;
 		$data = array(
             'name' => $this->input->post('title'),
             'logo' => $this->input->post('logo'),
@@ -125,26 +112,19 @@ class Admin extends CI_Controller {
             'downloadurl' => $this->input->post('download_url'),
             'requirement' => $this->input->post('requirement'),
             'category' => $this->input->post('category'),
-            'category' => $this->input->post('category'),
             'description' => $this->input->post('description'),
             'version' => $this->input->post('version'),
             'released_date' => $this->input->post('released_date'),
-        );
-        $data1 = array(
-            'name' => $this->input->post('title'),
             'relation' => $this->input->post('relation'),
-            'category' => $this->input->post('category'),
-        );       
+            'trending' => $isTrend,
+        );  
        
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('admin/addsoftware');
         } else {
-			$this->db->insert('software', $data1);
 			$this->db->insert('softdata', $data);
+            // print_r($data);
             redirect('addSoftware');
-
-            // $this->load->view('Assets/addsoftware');
-
         }
     }
 
@@ -191,6 +171,7 @@ class Admin extends CI_Controller {
         // $this->load->view('admin/editBlog',$blogs);
         print_r($blogs);
     }
+
 
 
 

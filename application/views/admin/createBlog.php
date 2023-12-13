@@ -44,6 +44,14 @@
                     </select>
                   </div>
                 </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="form-control-label">Generate Content</label>
+                    <button class="btn btn-link" onclick='window.open("https://wordhtml.com/", "_blank")'>
+                      https://wordhtml.com/
+                    </button>
+                  </div>
+                </div>
               </div>
               <div>
                 <button class="btn btn-primary btn-sm ms-auto" type="submit">Add</button>

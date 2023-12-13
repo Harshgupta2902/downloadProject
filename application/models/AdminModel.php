@@ -9,30 +9,6 @@ class AdminModel extends CI_Model {
         return $query->row_array();
     }
 
-   public function getSoftwares() {
-		$this->db->select('*');
-		$this->db->from('software');
-		$this->db->group_by('relation');
-		$query = $this->db->get();
-		$result = array();
-		$finalarray=array();
-		foreach ($query->result() as $row) {
-			$this->db->select('softdata.id, softdata.name, softdata.logo, softdata.company, softdata.free');
-			$this->db->from('softdata');
-			$this->db->join('software', 'softdata.name = software.name');
-			$this->db->where('software.relation', $row->relation);
-			$subquery = $this->db->get();
-			foreach ($subquery->result() as $subrow) {
-				$result[$row->relation][] = $subrow;
-			}
-		}
-		$finalarray['Windows']=$result[1];
-		$finalarray['Mac']=$result[2];
-		$finalarray['Ios']=$result[3];
-		$finalarray['Android']=$result[4];
-        
-        return $finalarray;
-	}
 
     public function getBlogs() {
         $this->db->select('*');
@@ -54,7 +30,14 @@ class AdminModel extends CI_Model {
     }
 
 
+    // public function updateTrending($id,$value) {
+    // // Assuming you have a 'trending' table with a 'trending' column
+    //     $data = array('trending' => $value);
 
+    //     // Assuming you have a unique identifier for your record, replace 'your_id_column' and 'your_id_value' accordingly
+    //     $this->db->where('id', $id);
+    //     $this->db->update('softdata', $data);
+    // }
 
 
 	public function getTotalBlogs() {
@@ -79,12 +62,42 @@ class AdminModel extends CI_Model {
 
 
 
+    public function getSoftwares() {
+        $this->db->select('*');
+        $this->db->order_by('id', 'DESC'); 
+        $this->db->limit(8);
+        $query = $this->db->get('softdata');
+        return $query->result_array();
+    }
+
+    public function organize_softwares_by_relation($data) {
+        $organizedData = [];
+        foreach ($data as $record) {
+            $relation = $record['relation'];
+
+            if (!isset($organizedData[$relation])) {
+                $organizedData[$relation] = [];
+            }
+
+            $organizedData[$relation][] = $record;
+        }
+
+        $finalarray=array();
+		$finalarray['Windows']=$organizedData[1];
+		$finalarray['Mac']=$organizedData[2];
+		$finalarray['Ios']=$organizedData[3];
+		$finalarray['Android']=$organizedData[4];
+        
+        return $finalarray;
+    }
+
+
+
 	public function get_count() {
         return $this->db->count_all('blogs');
     }
 
-	public function getBlog($limit, $start) {
-		$this->db->limit($limit, $start);
+	public function getBlog() {
 		$this->db->order_by('id', 'DESC'); // Replace 'your_column_name' with the actual column name you want to order by
 		$query = $this->db->get("blogs");
 		return $query->result();

@@ -95,4 +95,5 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
-  <script src="<?php echo base_url("asset/js/argon-dashboard.min.js") ?>"></script>
+<script src="<?php echo base_url("asset/js/argon-dashboard.min.js") ?>"></script>
+<script src="<?php echo base_url("asset/pagination.js") ?>"></script>

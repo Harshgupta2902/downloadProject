@@ -18,17 +18,17 @@ class Welcome extends CI_Controller {
 	{
 		$finalData['mainNav'] = $this->GetQuery->getNavData();
 		$finalData['blogs'] = $this->GetQuery->getBlogs();
-		$finalData['tabCard'] = $this->GetQuery->tabCard('App');
-        // echo "<pre>";
-        // print_r($finalData['tabCard']);
+		$data = $this->GetQuery->getTabsData();
+        $finalData['tabCard'] = $this->GetQuery->organize_tabs_by_relation($data);
+
+			// echo "<pre>";
+			// print_r($finalData['mainNav']);
 		$this->load->view('index', $finalData);
 	}
 		
-	public function product($title){	
-		$originalText = $title;
-		$cleanedText = str_replace('-', ' ', $originalText);
+	public function product($id){
 		$finalData['mainNav'] = $this->GetQuery->getNavData(); 
-		$finalData['softData'] = $this->GetQuery->getJoinedSoftwareData($cleanedText);
+		$finalData['softData'] = $this->GetQuery->getJoinedSoftwareData($id);
         // echo "<pre>";
         // print_r($finalData['softData']);
 		$this->load->view('product', $finalData);
@@ -37,6 +37,7 @@ class Welcome extends CI_Controller {
     public function blog($id){
 		$finalData['mainNav'] = $this->GetQuery->getNavData();
         $finalData['blogData'] = $this->GetQuery->getBlogData($id);
+		// print_r($finalData['blogData'][0]['image']);
         $this->load->view('blog', $finalData);
     }
 	

@@ -3,7 +3,7 @@
 <!-- This is an example component -->
 <div class="max-w-2xl mx-auto">
     <div style="margin-top:2rem "></div>
-<h2 class="g-text-xlarge g-text-bold lg:u-col-12 md:u-col-6 sm:u-col-2">Best Browsers Apps</h2>
+<h2 class="g-text-xlarge g-text-bold lg:u-col-12 md:u-col-6 sm:u-col-2">Best Trending Apps</h2>
     <div class="border-b border-gray-200 dark:border-gray-700 mb-4">
         <ul class="flex flex-wrap -mb-px" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
             <li class="mr-2" role="presentation">
@@ -52,29 +52,29 @@
                     <div class="c-productCard_icon">
                         <div>
                             <picture class="c-cmsImage">
-                                <img src="<?php echo $windows->logo ?>"
-                                    alt="<?php echo $windows->name ?> logo" />
+                                <img src="<?php echo $windows['logo'] ?>"
+                                    alt="<?php echo $windows['name'] ?> logo" />
                             </picture>
                         </div>
                     </div>
                     <div class="c-productCard_info">
                         <h3 class="c-productCard_title g-text-large g-text-bold g-outer-spacing-bottom-xsmall">
-                        <?php echo $windows->name ?>
+                        <?php echo $windows['name'] ?>
                         </h3>
                         <div class="c-productCard_subhead u-text-uppercase g-color-primary g-text-bold g-text-xsmall">
-                        <?php echo $windows->free ?>
+                        <?php echo $windows['free'] ?>
                         </div>
                     </div>
                 </div>
                 <div class="c-productCard_footer u-flexbox-column g-outer-spacing-top-medium">
                     <div class="c-productCard_summary g-text-small g-color-gray70">
-                        <?php echo $windows->description ?>
+                        <?php echo $windows['description'] ?>
                     </div>
                     <!---->
                 </div>
                 <!-- <a href="<?php echo $windows->downloadurl ?>" class="c-productCard_link"> -->
-                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $windows->name)); ?>" class="c-productCard_link">
-                    <?php echo $windows->name ?>
+                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $windows['id'])); ?>" class="c-productCard_link">
+                    <?php echo $windows['name'] ?>
                 </a>
             </div>
         <?php } ?>
@@ -91,28 +91,28 @@
                     <div class="c-productCard_icon">
                         <div>
                             <picture class="c-cmsImage">
-                                <img src="<?php echo $mac->logo ?>"
-                                    alt="<?php echo $mac->name ?> logo" />
+                                <img src="<?php echo $mac['logo'] ?>"
+                                    alt="<?php echo $mac['name'] ?> logo" />
                             </picture>
                         </div>
                     </div>
                     <div class="c-productCard_info">
                         <h3 class="c-productCard_title g-text-large g-text-bold g-outer-spacing-bottom-xsmall">
-                        <?php echo $mac->name ?>
+                        <?php echo $mac['name'] ?>
                         </h3>
                         <div class="c-productCard_subhead u-text-uppercase g-color-primary g-text-bold g-text-xsmall">
-                        <?php echo $mac->free ?>
+                        <?php echo $mac['free'] ?>
                         </div>
                     </div>
                 </div>
                 <div class="c-productCard_footer u-flexbox-column g-outer-spacing-top-medium">
                     <div class="c-productCard_summary g-text-small g-color-gray70">
-                        <?php echo $mac->description ?>
+                        <?php echo $mac['description'] ?>
                     </div>
                     <!---->
                 </div>
-                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $mac->name)); ?>" class="c-productCard_link">
-                    <?php echo $mac->name ?>
+                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $mac['id'])); ?>" class="c-productCard_link">
+                    <?php echo $mac['name'] ?>
                 </a>
             </div>
         <?php } ?>
@@ -127,28 +127,28 @@
                     <div class="c-productCard_icon">
                         <div>
                             <picture class="c-cmsImage">
-                                <img src="<?php echo $Ios->logo ?>"
-                                    alt="<?php echo $Ios->name ?> logo" />
+                                <img src="<?php echo $Ios['logo'] ?>"
+                                    alt="<?php echo $Ios['name'] ?> logo" />
                             </picture>
                         </div>
                     </div>
                     <div class="c-productCard_info">
                         <h3 class="c-productCard_title g-text-large g-text-bold g-outer-spacing-bottom-xsmall">
-                        <?php echo $Ios->name ?>
+                        <?php echo $Ios['name'] ?>
                         </h3>
                         <div class="c-productCard_subhead u-text-uppercase g-color-primary g-text-bold g-text-xsmall">
-                        <?php echo $Ios->free ?>
+                        <?php echo $Ios['free'] ?>
                         </div>
                     </div>
                 </div>
                 <div class="c-productCard_footer u-flexbox-column g-outer-spacing-top-medium">
                     <div class="c-productCard_summary g-text-small g-color-gray70">
-                        <?php echo $Ios->description ?>
+                        <?php echo $Ios['description'] ?>
                     </div>
                     <!---->
                 </div>
-                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $Ios->name)); ?>" class="c-productCard_link">
-                    <?php echo $Ios->name ?>
+                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $Ios['id'])); ?>" class="c-productCard_link">
+                    <?php echo $Ios['name'] ?>
                 </a>
             </div>
         <?php } ?>
@@ -163,28 +163,28 @@
                     <div class="c-productCard_icon">
                         <div>
                             <picture class="c-cmsImage">
-                                <img src="<?php echo $Android->logo ?>"
-                                    alt="<?php echo $Android->name ?> logo" />
+                                <img src="<?php echo $Android['logo'] ?>"
+                                    alt="<?php echo $Android['name'] ?> logo" />
                             </picture>
                         </div>
                     </div>
                     <div class="c-productCard_info">
                         <h3 class="c-productCard_title g-text-large g-text-bold g-outer-spacing-bottom-xsmall">
-                        <?php echo $Android->name ?>
+                        <?php echo $Android['name'] ?>
                         </h3>
                         <div class="c-productCard_subhead u-text-uppercase g-color-primary g-text-bold g-text-xsmall">
-                        <?php echo $Android->free ?>
+                        <?php echo $Android['free'] ?>
                         </div>
                     </div>
                 </div>
                 <div class="c-productCard_footer u-flexbox-column g-outer-spacing-top-medium">
                     <div class="c-productCard_summary g-text-small g-color-gray70">
-                        <?php echo $Android->description ?>
+                        <?php echo $Android['description'] ?>
                     </div>
                     <!---->
                 </div>
-                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $Android->name)); ?>" class="c-productCard_link">
-                    <?php echo $Android->name ?>
+                <a href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $Android['id'])); ?>" class="c-productCard_link">
+                    <?php echo $Android['name'] ?>
                 </a>
             </div>
         <?php } ?>

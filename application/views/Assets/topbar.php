@@ -36,7 +36,7 @@
                             @focusout="await $nextTick();!$el.contains($focus.focused()) && (open = false)">
                                 <?php foreach ($mainNav["subnav"] as $subnavItem): ?>
                                     <li>
-                                    <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $subnavItem["subnav_title"])); ?>">
+                                    <a class="text-slate-800 hover:bg-slate-50 flex items-center p-2" href="<?php echo base_url('product/') . urlencode(str_replace(' ', '-', $subnavItem["subnav_id"])); ?>">
                                             <div class="flex items-center justify-center bg-white border border-slate-200 rounded shadow-sm h-7 w-7 shrink-0 mr-3">
                                                 <svg class="fill-indigo-500" xmlns="http://www.w3.org/2000/svg" width="12" height="12">
                                                     <!-- Add your SVG path here -->
