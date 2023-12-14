@@ -81,32 +81,37 @@ class GetQuery extends CI_Model {
     
 
     public function getTabsData() {
-        $this->db->select('id, name, relation, logo, description, free');
-        $this->db->order_by('id', 'DESC'); 
-        $this->db->where('trending', '1'); 
-        $this->db->limit(8);
-        $query = $this->db->get('softdata');
-        return $query->result_array();
-    }
+        $query['Windows'] = $this->db->select('id, name, relation, logo, description, free')
+                          ->order_by('id','DESC')
+                          ->where('trending','1')
+                          ->where('relation','1')
+                          ->limit(8)
+                          ->get('softdata')
+                          ->result_array();
 
-    public function organize_tabs_by_relation($data) {
-        $organizedData = [];
-        foreach ($data as $record) {
-            $relation = $record['relation'];
+        $query['Mac'] = $this->db->select('id, name, relation, logo, description, free')
+                          ->order_by('id','DESC')
+                          ->where('trending','1')
+                          ->where('relation','2')
+                          ->limit(8)
+                          ->get('softdata')
+                          ->result_array();
 
-            if (!isset($organizedData[$relation])) {
-                $organizedData[$relation] = [];
-            }
+        $query['Ios'] = $this->db->select('id, name, relation, logo, description, free')
+                          ->order_by('id','DESC')
+                          ->where('trending','1')
+                          ->where('relation','3')
+                          ->limit(8)
+                          ->get('softdata')
+                          ->result_array();
 
-            $organizedData[$relation][] = $record;
-        }
-
-        $finalarray=array();
-		$finalarray['Windows']=$organizedData[1];
-		$finalarray['Mac']=$organizedData[2];
-		$finalarray['Ios']=$organizedData[3];
-		$finalarray['Android']=$organizedData[4];
-        
-        return $finalarray;
+        $query['Android'] = $this->db->select('id, name, relation, logo, description, free')
+                          ->order_by('id','DESC')
+                          ->where('trending','1')
+                          ->where('relation','4')
+                          ->limit(8)
+                          ->get('softdata')
+                          ->result_array();
+        return $query;
     }
 }

@@ -18,11 +18,10 @@ class Welcome extends CI_Controller {
 	{
 		$finalData['mainNav'] = $this->GetQuery->getNavData();
 		$finalData['blogs'] = $this->GetQuery->getBlogs();
-		$data = $this->GetQuery->getTabsData();
-        $finalData['tabCard'] = $this->GetQuery->organize_tabs_by_relation($data);
+		$finalData['tabCard'] = $this->GetQuery->getTabsData();
 
 			// echo "<pre>";
-			// print_r($finalData['mainNav']);
+			// print_r($finalData['tabCard']);
 		$this->load->view('index', $finalData);
 	}
 		

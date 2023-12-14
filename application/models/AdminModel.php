@@ -65,7 +65,6 @@ class AdminModel extends CI_Model {
     public function getSoftwares() {
         $this->db->select('*');
         $this->db->order_by('id', 'DESC'); 
-        $this->db->limit(8);
         $query = $this->db->get('softdata');
         return $query->result_array();
     }
