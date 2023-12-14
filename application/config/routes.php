@@ -60,6 +60,7 @@ $route['auth'] = 'Admin/auth';
 $route['dashboard'] = 'Admin/dashboard';
 $route['softwares'] = 'Admin/softwares';
 $route['blogs'] = 'Admin/blogs';
+$route['comments'] = 'Admin/comments';
 
 
 $route['deleteBlog'] = 'Admin/deleteBlog';

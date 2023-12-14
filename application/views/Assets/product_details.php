@@ -5,13 +5,56 @@
         <main class="main">
             <div class="post-wrap">
                 <article class="article">
-                    <h2>Overview of <?php echo $softData['data']['name'] ?>&nbsp;</h2>
+                    <h2>
+                        Overview of
+                        <?php echo $softData['data']['name'] ?>&nbsp;
+                    </h2>
                     <?php echo $softData['data']['overview'] ?>
-                    <h3>Features of <?php echo $softData['data']['name'] ?></h3>
+                    <h3>
+                        Features of
+                        <?php echo $softData['data']['name'] ?>
+                    </h3>
                     <?php echo $softData['data']['features'] ?>
                     <h3>System Requirements and Technical Details</h3>
                     <?php echo $softData['data']['requirement'] ?>
                 </article>
+            </div>
+            <div class="post-wrap shadow-2xl">
+                <div class="section-title">
+                    <h2>Comments</h2>
+                </div>
+                <div class="comment_form-wrap__hSvRJ">
+                    <h3 class="comment_form-title__Cd864">Leave a comment</h3>
+                    <p>Your email address will not be published. Required fields are marked * </p>
+                <?php echo form_open('Welcome/comments'); ?>
+                        <div class="comment_form-group__wt4lJ">
+                            <div class="comment_form-input__sXwzF">
+                                <input
+                                    class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                    required type="text" id="name" name="name" placeholder="Name*" />
+                            </div>
+                            <div class="comment_form-input__sXwzF">
+                                <input
+                                    class="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
+                                    required type="email" id="email" name="email" placeholder="Email*" />
+                            </div>
+                        </div>
+                        <div class="my-4">
+                            <textarea placeholder="Comment*" id="comment" name="comment"
+                            required class="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"></textarea>
+                        </div>
+                        <input type="hidden" name="software_id" value="<?php echo $softData['data']['id'] ?>">
+
+                        <div class="my-2 w-1/2 lg:w-1/4">
+                            <button type="submit"
+                                class="uppercase text-sm font-bold tracking-wide bg-blue-900 text-gray-100 p-3 rounded-lg w-full focus:outline-none focus:shadow-outline">
+                                Post Comment
+                            </button>
+                        </div>
+                <?php echo form_close(); ?>
+
+                </div>
+                <div class="comment_list__iYlX2"></div>
             </div>
         </main>
         <aside class="sidebar">
@@ -27,20 +70,19 @@
                     </div>
                     <div class="c-productCard_info">
                         <h3 class="c-productCard_title g-text-large g-text-bold g-outer-spacing-bottom-xsmall">
-                        <?php echo $softData['data']['name'] ?>
+                            <?php echo $softData['data']['name'] ?>
                         </h3>
                         <div class="c-productCard_subhead u-text-uppercase g-color-primary g-text-bold g-text-xsmall">
-                        <?php echo $softData['data']['free'] ?>
+                            <?php echo $softData['data']['free'] ?>
                         </div>
                     </div>
                 </div>
                 <div class="filter-options">
                     <div class="form-group">
-                        <div class="custom-input">
-                        </div>
+                        <div class="custom-input"></div>
                     </div>
                     <a href="<?php echo $softData['data']['downloadurl'] ?>">
-                        <button class="btn-primary_dark full">Direct Download</button>                    
+                        <button class="btn-primary_dark full">Direct Download</button>
                     </a>
                     <div class="other-buttons">
                         <button class="btn fav" type="button" aria-label="Add to Favorite">
@@ -51,23 +93,31 @@
                                 </svg></i><span>Add to Favorite</span>
                         </button>
                     </div>
-                </div>  
+                </div>
             </div>
             <div class="widget_wrap__lfits md-none">
                 <div class="widget_header__vge_D">
                     <h3>Product Information</h3>
                 </div>
                 <div class="info_item__0IxQW">
-                    <span class="info_label__TewQ_">File name</span><span class="info_data__N609l"><?php echo $softData['data']['name'] ?></span>
+                    <span class="info_label__TewQ_">File name</span><span class="info_data__N609l">
+                        <?php echo $softData['data']['name'] ?>
+                    </span>
                 </div>
                 <div class="info_item__0IxQW">
-                    <span class="info_label__TewQ_">Created by</span><span class="info_data__N609l"><?php echo $softData['data']['company'] ?></span>
+                    <span class="info_label__TewQ_">Created by</span><span class="info_data__N609l">
+                        <?php echo $softData['data']['company'] ?>
+                    </span>
                 </div>
                 <div class="info_item__0IxQW">
-                    <span class="info_label__TewQ_">Version</span><span class="info_data__N609l"><?php echo $softData['data']['version'] ?></span>
+                    <span class="info_label__TewQ_">Version</span><span class="info_data__N609l">
+                        <?php echo $softData['data']['version'] ?>
+                    </span>
                 </div>
                 <div class="info_item__0IxQW">
-                    <span class="info_label__TewQ_">Release Date</span><span class="info_data__N609l"><?php echo $softData['data']['released_date'] ?></span>
+                    <span class="info_label__TewQ_">Release Date</span><span class="info_data__N609l">
+                        <?php echo $softData['data']['released_date'] ?>
+                    </span>
                 </div>
                 <div class="info_item__0IxQW">
                     <span class="info_label__TewQ_">Languages</span><span
@@ -78,16 +128,20 @@
                 </div>
             </div>
         </aside>
-    </div>
+    </div>  
 </div>
 
 <style>
     .tags_list__UUDK6 {
-    /* align-items: center; */
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 6px 4px;
-    padding: 10px 0;
+        /* align-items: center; */
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px 4px;
+        padding: 10px 0;
+    }
+    [type=text]:invalid, select:invalid, textarea:invalid {
+    /* border: 1px solid #eb0036; */
+    /* color: #eb0036; */
 }
 </style>

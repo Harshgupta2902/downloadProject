@@ -39,6 +39,19 @@ class Welcome extends CI_Controller {
 		// print_r($finalData['blogData'][0]['image']);
         $this->load->view('blog', $finalData);
     }
+
+	public function comments(){
+		$software_id =  $this->input->post('software_id');
+		$data = array(
+			'name' => $this->input->post('name'),
+			'email' => $this->input->post('email'),
+			'comment' => $this->input->post('comment'),
+			'software_id' => $software_id,
+		);
+		$this->db->insert('comments', $data);
+		redirect('product/'.$software_id);
+		// print_r($data);
+	}
 	
 
 

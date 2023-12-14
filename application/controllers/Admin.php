@@ -48,6 +48,12 @@ class Admin extends CI_Controller
         }
     }
 
+    public function logOut()
+    {
+        $this->session->sess_destroy();
+        redirect('login');
+    }
+
     public function dashboard()
     {
         if ($this->session->userdata('user_id')) {
@@ -62,12 +68,20 @@ class Admin extends CI_Controller
         }
     }
 
-    public function logOut()
+
+    public function comments()
     {
-        $this->session->sess_destroy();
-        redirect('login');
+        if ($this->session->userdata('user_id')) {
+            $comments['comments'] = $this->db->query('SELECT * FROM comments ORDER BY timestamp DESC')->result_array();
+            // echo"<pre>";
+            // print_r($comments);
+            $this->load->view('admin/comments', $comments);
+        } else {
+            redirect('login');
+        }
     }
 
+    
     public function softwares()
     {
         if ($this->session->userdata('user_id')) {
