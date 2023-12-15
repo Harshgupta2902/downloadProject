@@ -114,4 +114,34 @@ class GetQuery extends CI_Model {
                           ->result_array();
         return $query;
     }
+
+    public function searchData($searchTerm) {
+
+        if ($searchTerm !== null && is_string($searchTerm)) {
+            $this->db->select('softdata.*, navbar.title as relation_name');
+            $this->db->like('name', $searchTerm);
+            $this->db->or_like('description', $searchTerm);
+            $this->db->join('navbar', 'navbar.id = softdata.relation', 'left');
+            $query = $this->db->get('softdata');
+            return $query->result_array();
+        } else {
+            $this->db->select('softdata.*, navbar.title as relation_name');
+            $this->db->join('navbar', 'navbar.id = softdata.relation', 'left');
+            $query = $this->db->get('softdata');
+            return $query->result_array();
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

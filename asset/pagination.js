@@ -42,14 +42,14 @@ function pageButtons(pageCount, current) {
         disabled = (i === current) ? "disabled" : "";
         // buttons += `<button onclick='sort(${i})' ${disabled}>${i}</button>`;
         buttons += `<a href='javascript:void(0);' onclick='sort(${i})'
-                class="bg-white border border-gray-300 text-gray-500 hover:bg-gray-100 hover:text-gray-700 ml-0 rounded-l-lg leading-tight py-2 px-3 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">${i}</a>`;
+                class="bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-700 ml-0 rounded-l-lg leading-tight py-2 px-3 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-blue">${i}</a>`;
     }
 
     // Next Button
     disabled = (current === pageCount) ? "disabled" : "";
     // buttons += `<button onclick='sort(${current + 1})' ${disabled}>Next</button>`;
     buttons += `<a href='javascript:void(0);' onclick='sort(${current + 1})'
-                class="bg-white border border-gray-300 text-gray-500 hover:bg-gray-100 hover:text-gray-700 ml-0 rounded-l-lg leading-tight py-2 px-3 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>`;
+                class="bg-white text-gray-500 hover:bg-gray-100 hover:text-gray-700 ml-0 rounded-l-lg leading-tight py-2 px-3 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-blue">Next</a>`;
 
     return buttons;
 }

@@ -19,7 +19,7 @@
                     <?php foreach ($mainNav as $mainNav): ?>
                         <li class="p-4 lg:px-8 relative flex items-center space-x-1" x-data="{ open: false }"
                         @mouseenter="open = true" @mouseleave="open = false">
-                        <a class="text-slate-800 hover:text-slate-900" href="" :aria-expanded="open"><?php echo $mainNav["nav_title"]; ?></a>
+                        <a class="text-slate-800 hover:text-slate-900" href="<?php echo base_url('search') ?>" :aria-expanded="open"><?php echo $mainNav["nav_title"]; ?></a>
                         <button class="shrink-0 p-1" :aria-expanded="open" @click.prevent="open = !open">
                             <span class="sr-only">Show submenu for "<?php echo $mainNav["nav_title"]; ?>"</span>
                             <svg class="w-3 h-3 fill-slate-500" xmlns="http://www.w3.org/2000/svg" width="12" height="12">

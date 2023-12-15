@@ -54,6 +54,7 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['product/(:any)'] = 'Welcome/product/$1';
 $route['blog/(:any)'] = 'Welcome/blog/$1';
+$route['search'] = 'Welcome/search';
 
 $route['login'] = 'Admin/login';
 $route['auth'] = 'Admin/auth';

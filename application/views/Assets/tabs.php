@@ -43,8 +43,7 @@
 
     <!-- <?php print_r($tabCard['Windows'][0]->name) ?> -->
 <div id="myTabContent">
-    <div class="c-productCards g-grid-container u-grid-columns g-outer-spacing-bottom-large g-outer-spacing-top-large"
-            id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="c-productCards g-grid-container u-grid-columns g-outer-spacing-bottom-large g-outer-spacing-top-large" id="profile" role="tabpanel" aria-labelledby="profile-tab">
         <?php foreach ($tabCard['Windows'] as $windows) { ?>
             <div section="related_apps|Games|pos0"
                 class="c-globalCard lg:u-col-3 md:u-col-3 sm:u-col-2 c-productCard u-flexbox-column c-productCard-simple">
@@ -78,6 +77,7 @@
                 </a>
             </div>
         <?php } ?>
+        <div class="u-grid-full-row u-grid u-grid-columns"><a href="<?php echo base_url('search') ?>" section="related_apps|all" class="c-productCards_seeAll o-button o-button-large g-text-small g-text-bold u-flexbox u-flexbox-justifyCenter u-flexbox-alignCenter lg:u-col-6 lg:u-col-start-4 md:u-col-6 sm:u-col-2 nuxt-link-exact-active nuxt-link-active" aria-current="page">See All</a></div>
     </div>
 
 
@@ -116,6 +116,8 @@
                 </a>
             </div>
         <?php } ?>
+        <div class="u-grid-full-row u-grid u-grid-columns"><a href="<?php echo base_url('search') ?>" section="related_apps|all" class="c-productCards_seeAll o-button o-button-large g-text-small g-text-bold u-flexbox u-flexbox-justifyCenter u-flexbox-alignCenter lg:u-col-6 lg:u-col-start-4 md:u-col-6 sm:u-col-2 nuxt-link-exact-active nuxt-link-active" aria-current="page">See All</a></div>
+
     </div>
 
     <div class="c-productCards g-grid-container u-grid-columns g-outer-spacing-bottom-large g-outer-spacing-top-large hidden"
@@ -152,6 +154,8 @@
                 </a>
             </div>
         <?php } ?>
+        <div class="u-grid-full-row u-grid u-grid-columns"><a href="<?php echo base_url('search') ?>" section="related_apps|all" class="c-productCards_seeAll o-button o-button-large g-text-small g-text-bold u-flexbox u-flexbox-justifyCenter u-flexbox-alignCenter lg:u-col-6 lg:u-col-start-4 md:u-col-6 sm:u-col-2 nuxt-link-exact-active nuxt-link-active" aria-current="page">See All</a></div>
+
     </div>
 
     <div class="c-productCards g-grid-container u-grid-columns g-outer-spacing-bottom-large g-outer-spacing-top-large hidden"
@@ -188,9 +192,12 @@
                 </a>
             </div>
         <?php } ?>
+        <div class="u-grid-full-row u-grid u-grid-columns"><a href="<?php echo base_url('search') ?>" section="related_apps|all" class="c-productCards_seeAll o-button o-button-large g-text-small g-text-bold u-flexbox u-flexbox-justifyCenter u-flexbox-alignCenter lg:u-col-6 lg:u-col-start-4 md:u-col-6 sm:u-col-2 nuxt-link-exact-active nuxt-link-active" aria-current="page">See All</a></div>
+
 
     </div>
-    </div>
+
+</div>
     <script src="https://unpkg.com/@themesberg/flowbite@1.2.0/dist/flowbite.bundle.js"></script>
 
 </div>
