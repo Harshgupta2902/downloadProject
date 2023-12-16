@@ -16,8 +16,14 @@
 
 <!-- Custom Imports -->
 <link rel="stylesheet" href="<?php echo base_url("asset/style.css"); ?>" />
+<link rel="preload" href="<?php echo base_url("asset/style.css"); ?>" />
 <link rel="stylesheet" href="<?php echo base_url("asset/style2.css"); ?>" />
+<link rel="preload" href="<?php echo base_url("asset/style2.css"); ?>" />
+
+<link rel="stylesheet" href="<?php echo base_url("asset/filecr1.css"); ?>" />
+<link rel="preload" href="<?php echo base_url("asset/filecr1.css"); ?>" />
 <link rel="stylesheet" href="<?php echo base_url("asset/styles2.css"); ?>" />
+<link rel="preload" href="<?php echo base_url("asset/styles2.css"); ?>" />
 <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>

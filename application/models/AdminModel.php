@@ -46,7 +46,7 @@ class AdminModel extends CI_Model {
     }
 
 	public function getTotalSoftwares() {
-        $query = $this->db->get('softdata');
+        $query = $this->db->get('softwares');
         return $query->num_rows();
     }
 
@@ -56,40 +56,9 @@ class AdminModel extends CI_Model {
     }
 
 	public function getTotalCategory() {
-        $query = $this->db->get('navbar');
+        $query = $this->db->get('category');
         return $query->num_rows();
     }
-
-
-
-    public function getSoftwares() {
-        $this->db->select('*');
-        $this->db->order_by('id', 'DESC'); 
-        $query = $this->db->get('softdata');
-        return $query->result_array();
-    }
-
-    public function organize_softwares_by_relation($data) {
-        $organizedData = [];
-        foreach ($data as $record) {
-            $relation = $record['relation'];
-
-            if (!isset($organizedData[$relation])) {
-                $organizedData[$relation] = [];
-            }
-
-            $organizedData[$relation][] = $record;
-        }
-
-        $finalarray=array();
-		$finalarray['Windows']=$organizedData[1];
-		$finalarray['Mac']=$organizedData[2];
-		$finalarray['Ios']=$organizedData[3];
-		$finalarray['Android']=$organizedData[4];
-        
-        return $finalarray;
-    }
-
 
 
 	public function get_count() {
@@ -97,9 +66,48 @@ class AdminModel extends CI_Model {
     }
 
 	public function getBlog() {
-		$this->db->order_by('id', 'DESC'); // Replace 'your_column_name' with the actual column name you want to order by
+		$this->db->order_by('id', 'DESC');
 		$query = $this->db->get("blogs");
 		return $query->result();
 	}
 	
+    public function getSoftwares(){
+
+    $softwares = $this->db->select('slug_permanent')
+                ->get('category')
+                ->result_array();
+    return $softwares;
+    }
+
+
+
+
+
+
+    public function get_sorted_category(){
+        $query['Windows'] = $this->db->select('category.*, navs.slug_permanent as category_slug_permanent')
+                                        ->join('navs', 'category.relation = navs.id', 'left')
+                                        ->where('relation','1')
+                                        ->get('category')
+                                        ->result_array();
+        $query['mac'] = $this->db->select('category.*, navs.slug_permanent as category_slug_permanent')
+                                        ->join('navs', 'category.relation = navs.id', 'left')
+                                        ->where('relation','2')
+                                        ->get('category')
+                                        ->result_array();
+
+        $query['android'] = $this->db->select('category.*, navs.slug_permanent as category_slug_permanent')
+                                        ->join('navs', 'category.relation = navs.id', 'left')
+                                        ->where('relation','3')
+                                        ->get('category')
+                                        ->result_array();
+        return $query;
+    }
+
+
+
+
+
+
+
 }

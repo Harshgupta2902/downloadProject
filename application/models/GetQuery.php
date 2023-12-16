@@ -22,7 +22,6 @@ class GetQuery extends CI_Model {
                     'subnav' => []
                 ];
             }
-
             if (count($organizedData[$navbarId]['subnav']) < 6) {
                 if ($subnavId !== null) {
                     $organizedData[$navbarId]['subnav'][] = [
@@ -36,19 +35,7 @@ class GetQuery extends CI_Model {
         return array_values($organizedData);
     }
 
-    public function getJoinedSoftwareData($id) {
-        $this->db->select('');
-        $this->db->from('softdata');
-        $this->db->where('id', $id);
-        $query = $this->db->get();
-        $result = $query->result_array();
-    
-        if (!empty($result)) {
-            return ['data' => $result[0]];
-        } else {
-            return [];
-        }
-    }
+
 
     public function getBlogs(){
         $this->db->select('*');
@@ -80,43 +67,8 @@ class GetQuery extends CI_Model {
     }
     
 
-    public function getTabsData() {
-        $query['Windows'] = $this->db->select('id, name, relation, logo, description, free')
-                          ->order_by('id','DESC')
-                          ->where('trending','1')
-                          ->where('relation','1')
-                          ->limit(8)
-                          ->get('softdata')
-                          ->result_array();
-
-        $query['Mac'] = $this->db->select('id, name, relation, logo, description, free')
-                          ->order_by('id','DESC')
-                          ->where('trending','1')
-                          ->where('relation','2')
-                          ->limit(8)
-                          ->get('softdata')
-                          ->result_array();
-
-        $query['Ios'] = $this->db->select('id, name, relation, logo, description, free')
-                          ->order_by('id','DESC')
-                          ->where('trending','1')
-                          ->where('relation','3')
-                          ->limit(8)
-                          ->get('softdata')
-                          ->result_array();
-
-        $query['Android'] = $this->db->select('id, name, relation, logo, description, free')
-                          ->order_by('id','DESC')
-                          ->where('trending','1')
-                          ->where('relation','4')
-                          ->limit(8)
-                          ->get('softdata')
-                          ->result_array();
-        return $query;
-    }
 
     public function searchData($searchTerm) {
-
         if ($searchTerm !== null && is_string($searchTerm)) {
             $this->db->select('softdata.*, navbar.title as relation_name');
             $this->db->like('name', $searchTerm);
@@ -134,11 +86,99 @@ class GetQuery extends CI_Model {
 
 
 
+    public function gethomedata(){
+        $query['windows'] = $this->db->query("SELECT * FROM `softwares` WHERE `badge` IS NOT NULL AND TRIM(`badge`) <> '' AND `category_slug` = 'windows'");
+        $query['macos'] = $this->db->query("SELECT * FROM `softwares` WHERE `badge` IS NOT NULL AND TRIM(`badge`) <> '' AND `category_slug` = 'macos'");
+        $query['android'] = $this->db->query("SELECT * FROM `softwares` WHERE `badge` IS NOT NULL AND TRIM(`badge`) <> '' AND `category_slug` = 'android'");
+        $data['windows'] = $query['windows']->result_array();
+        $data['macos'] = $query['macos']->result_array();
+        $data['android'] = $query['android']->result_array();
+        return $data;
+    }
+
+
+    
+
+    public function getSoftwareData(){
+        $query['windows'] = $this->db->query("SELECT * FROM `softwares` WHERE `badge` IS NOT NULL AND TRIM(`badge`) <> '' AND `category_slug` = 'windows'");
+        $query['macos'] = $this->db->query("SELECT * FROM `softwares` WHERE `badge` IS NOT NULL AND TRIM(`badge`) <> '' AND `category_slug` = 'macos'");
+        $query['android'] = $this->db->query("SELECT * FROM `softwares` WHERE `badge` IS NOT NULL AND TRIM(`badge`) <> '' AND `category_slug` = 'android'");
+        $data['windows'] = $query['windows']->result_array();
+        $data['macos'] = $query['macos']->result_array();
+        $data['android'] = $query['android']->result_array();
+        return $data;
+    }
 
 
 
 
+///// scrap data of softwares inside data and save to db 
 
+    public function getSoftwareDetails($category_slug, $softwareslug) {
+        $url = "https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/$category_slug/$softwareslug.json?categorySlug=$category_slug&postSlug=$softwareslug";
+        $jsonResponse = file_get_contents($url);
+        $data = json_decode($jsonResponse, true);
+        $allSoftData = $data["pageProps"]["post"];
+        $postId = $allSoftData["id"];
+        $existingRecord = $this->db->get_where('softwaredata', array('post_id' => $postId))->row_array();
+    
+        if ($existingRecord) {
+            // echo "Error: Record with post_id {$allSoftData['id']} already exists.";
+            $finalRecord = $this->db
+                                ->select('softwaredata.*, softwares.*')  // Select columns from both tables
+                                ->from('softwaredata')
+                                ->join('softwares', 'softwaredata.slug = softwares.slug')
+                                ->where('softwaredata.post_id', $postId)
+                                ->get()
+            ->row_array();
+            return $finalRecord;
+            // print_r($finalRecord);
+        } else {
+            $downloadurl = $this->getDownloadLink($allSoftData['downloads'][0]['links'][0]['id']);
+            $dataToInsert = array(
+                'post_id' => $allSoftData["id"],
+                'title' => $allSoftData["title"],
+                'extra_title' => $allSoftData["extra_title"],
+                'slug' => $allSoftData["slug"],
+                'excerpt' => $allSoftData["excerpt"],
+                'article' => $allSoftData["article"],
+                'license' => $allSoftData["license"],
+                'downloads_count' => $allSoftData["downloads_count"],
+                'seo_title' => $allSoftData["seo"]['title'],
+                'seo_description' => $allSoftData["seo"]['description'],
+                'creator_name' => $allSoftData["creators"][0]['name'],
+                'creator_url' => $allSoftData["creators"][0]['url'],
+                'version' => $allSoftData['downloads'][0]['version'],
+                'filename' => $allSoftData['downloads'][0]['filename'],
+                'releaseDate' => $allSoftData['downloads'][0]['releaseDate'],
+                'download_id' => $allSoftData['downloads'][0]['links'][0]['id'],
+                'download_url' => $downloadurl
+            );
+            // $this->db->insert('softwaredata', $dataToInsert);  
+
+            $finalRecord = $this->db
+                                ->select('softwaredata.*, softwares.*')  // Select columns from both tables
+                                ->from('softwaredata')
+                                ->join('softwares', 'softwaredata.slug = softwares.slug')
+                                ->where('softwaredata.post_id', $postId)
+                                ->get()
+                                ->row_array();
+            return $finalRecord;
+            // print_r($finalRecord);
+            // echo"<pre>";
+        }
+    }
+
+///// scrap download link of softwares inside data and save to db 
+    
+    private function getDownloadLink($id) {
+        $url = "https://filecr.com/api/actions/downloadlink/?id=$id";
+        $jsonResponse = file_get_contents($url);
+        $data = json_decode($jsonResponse, true);
+        $url = $data['url'];
+        return $url;
+    }
+    
 
 
 
