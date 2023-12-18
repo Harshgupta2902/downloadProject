@@ -48,29 +48,24 @@ class Admin extends CI_Controller
         }
     }
 
-    public function logOut()
-    {
-        $this->session->sess_destroy();
-        redirect('login');
-    }
+    
 
-    public function dashboard()
-    {
+    public function dashboard(){
         if ($this->session->userdata('user_id')) {
             $dashboard['totalBlogs'] = $this->AdminModel->getTotalBlogs();
             $dashboard['totalSoftwares'] = $this->AdminModel->getTotalSoftwares();
             $dashboard['totalUsers'] = $this->AdminModel->getTotalUsers();
             $dashboard['totalCategory'] = $this->AdminModel->getTotalCategory();
-            // print_r($dashboard);
+            $dashboard['softwareCount'] = $this->AdminModel->softwareCount();
+            // echo"<pre>";
+            // print_r($dashboard['softwareCount']);
             $this->load->view('admin/dashboard', $dashboard);
         } else {
             redirect('login');
         }
     }
 
-
-    public function comments()
-    {
+    public function comments(){
         if ($this->session->userdata('user_id')) {
             $comments['comments'] = $this->db->query('SELECT * FROM comments ORDER BY timestamp DESC')->result_array();
             // echo"<pre>";
@@ -88,8 +83,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/category', $data);
     }
     
-    public function softwares()
-    {
+    public function softwares(){
         if ($this->session->userdata('user_id')) {
             $softwares = $this->AdminModel->getSoftwares();
 
@@ -109,8 +103,11 @@ class Admin extends CI_Controller
 
     }
 
-    public function blogs()
-    {
+
+
+//// Blogs Section 
+
+    public function blogs(){
         if ($this->session->userdata('user_id')) {
             $data['blogs'] = $this->AdminModel->getBlog();
             $this->load->view('admin/blogs', $data);
@@ -119,8 +116,7 @@ class Admin extends CI_Controller
         }
     }
 
-    public function deleteBlog($id)
-    {
+    public function deleteBlog($id){
         if ($this->session->userdata('user_id')) {
             $this->db->where('id', $id);
             $this->db->delete('blogs');
@@ -178,8 +174,7 @@ class Admin extends CI_Controller
 
     }
 
-    public function createBlog()
-    {
+    public function createBlog(){
         if ($this->session->userdata('user_id')) {
             $this->load->view('admin/createBlog');
         } else {
@@ -188,8 +183,7 @@ class Admin extends CI_Controller
 
     }
 
-    public function save_blog()
-    {
+    public function save_blog(){
         if ($this->session->userdata('user_id')) {
             $data = array(
                 'title' => $this->input->post('title'),
@@ -211,8 +205,7 @@ class Admin extends CI_Controller
 
     }
 
-    public function update_blog($id)
-    {
+    public function update_blog($id){
         if ($this->session->userdata('user_id')) {
             $data = array(
                 'title' => $this->input->post('title'),
@@ -233,8 +226,7 @@ class Admin extends CI_Controller
 
     }
 
-    public function editBlog($id)
-    {
+    public function editBlog($id){
         if ($this->session->userdata('user_id')) {
             $blogs['blogData'] = $this->db->query("select * from blogs where id = '$id' ")->result_array();
             // $this->load->view('admin/editBlog',$blogs);
@@ -249,8 +241,11 @@ class Admin extends CI_Controller
 
 
 
-
-
+///  logout 
+    public function logOut(){
+        $this->session->sess_destroy();
+        redirect('login');
+    }
 
 
 
@@ -367,17 +362,18 @@ private function getSoftwares($pageNumber, $slug, $category_slug) {
 private function getData($softData) {
     $extractedData = [];
     foreach ($softData as $software) {
-        $title = $software['title'];
-        $icon = $software['icon'];
-        $excerpt = $software['excerpt'];
-        $release_date = $software['release_date'];
-        $slug = $software['slug'];
-        $downloads_count = $software['downloads_count'];
-        $sub_category_slug = $software['categories']['subCategory']['slug_permanent'];
-        $sub_category_title = $software['categories']['subCategory']['name'];
-        $category_slug = $software['categories']['primary']['slug_permanent'];
-        $download_size = $software['size']['value'].$software['size']['unit'] ;
-        $badge = $software['badge'] ;
+        $title = isset($software['title']) ? $software['title'] : null;
+        $icon = isset($software['icon']) ? $software['icon'] : null;
+        $excerpt = isset($software['excerpt']) ? $software['excerpt'] : null;
+        $release_date = isset($software['release_date']) ? $software['release_date'] : null;
+        $slug = isset($software['slug']) ? $software['slug'] : null;
+        $downloads_count = isset($software['downloads_count']) ? $software['downloads_count'] : null;
+        $sub_category_slug = isset($software['categories']['subCategory']['slug_permanent']) ? $software['categories']['subCategory']['slug_permanent'] : null;
+        $sub_category_title = isset($software['categories']['subCategory']['name']) ? $software['categories']['subCategory']['name'] : null;
+        $category_slug = isset($software['categories']['primary']['slug_permanent']) ? $software['categories']['primary']['slug_permanent'] : null;
+        $download_size = isset($software['size']['value']) && isset($software['size']['unit']) ? $software['size']['value'].$software['size']['unit'] : null;
+        $badge = isset($software['badge']) ? $software['badge'] : null;
+
 
         // Add data to the array
         $extractedData[] = [
@@ -470,12 +466,16 @@ private function getAndroidData($softData) {
     return $extractedData;
 }
 
+public function getlinks(){
+    $query = $this->db->select('id, slug, category_slug')->get('softwares');
+    $categories = $query->result_array();
+    foreach ($categories as $urldata) {
+        $data = $this->AdminModel->getSoftwareDetails($urldata['category_slug'],$urldata['slug']);
+    }
 
-
-
-
-
-
+    // echo "<pre>";
+    // print_r($categories);  
+}
 
 
 }

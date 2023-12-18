@@ -84,8 +84,6 @@ class GetQuery extends CI_Model {
         }
     }
 
-
-
     public function gethomedata(){
         $query['windows'] = $this->db->query("SELECT * FROM `softwares` WHERE `badge` IS NOT NULL AND TRIM(`badge`) <> '' AND `category_slug` = 'windows'");
         $query['macos'] = $this->db->query("SELECT * FROM `softwares` WHERE `badge` IS NOT NULL AND TRIM(`badge`) <> '' AND `category_slug` = 'macos'");
@@ -95,9 +93,6 @@ class GetQuery extends CI_Model {
         $data['android'] = $query['android']->result_array();
         return $data;
     }
-
-
-    
 
     public function getSoftwareData(){
         $query['windows'] = $this->db->query("SELECT * FROM `softwares` WHERE `badge` IS NOT NULL AND TRIM(`badge`) <> '' AND `category_slug` = 'windows'");
@@ -121,9 +116,7 @@ class GetQuery extends CI_Model {
         $allSoftData = $data["pageProps"]["post"];
         $postId = $allSoftData["id"];
         $existingRecord = $this->db->get_where('softwaredata', array('post_id' => $postId))->row_array();
-    
         if ($existingRecord) {
-            // echo "Error: Record with post_id {$allSoftData['id']} already exists.";
             $finalRecord = $this->db
                                 ->select('softwaredata.*, softwares.*')  // Select columns from both tables
                                 ->from('softwaredata')
@@ -131,8 +124,10 @@ class GetQuery extends CI_Model {
                                 ->where('softwaredata.post_id', $postId)
                                 ->get()
             ->row_array();
+            // print_r($existingRecord);
+
             return $finalRecord;
-            // print_r($finalRecord);
+            
         } else {
             $downloadurl = $this->getDownloadLink($allSoftData['downloads'][0]['links'][0]['id']);
             $dataToInsert = array(
@@ -154,7 +149,7 @@ class GetQuery extends CI_Model {
                 'download_id' => $allSoftData['downloads'][0]['links'][0]['id'],
                 'download_url' => $downloadurl
             );
-            // $this->db->insert('softwaredata', $dataToInsert);  
+            $this->db->insert('softwaredata', $dataToInsert);  
 
             $finalRecord = $this->db
                                 ->select('softwaredata.*, softwares.*')  // Select columns from both tables
@@ -163,8 +158,9 @@ class GetQuery extends CI_Model {
                                 ->where('softwaredata.post_id', $postId)
                                 ->get()
                                 ->row_array();
-            return $finalRecord;
             // print_r($finalRecord);
+
+            return $finalRecord;
             // echo"<pre>";
         }
     }

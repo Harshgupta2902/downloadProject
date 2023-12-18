@@ -1,0 +1,514 @@
+{
+  "pageProps": {
+    "category": {
+      "name": "MacOS",
+      "slug": "macos",
+      "slug_permanent": "macos",
+      "title": "MacOS Professional & Premium Programs Free Download - FileCR",
+      "description": "Free Download MacOS apps and utilities to programs for creatives and professionals because not all the best Mac apps will be found on the App Store.",
+      "children": [
+        {
+          "name": "Audio & Music",
+          "slug": "audio-editors",
+          "slug_permanent": "audio-editors",
+          "title": "Audio & Music Programs for macOS - FileCR",
+          "description": "Free download applications designed for recording, editing, mixing and producing music and audio content on Apple computers."
+        },
+        {
+          "name": "Backup & Restore",
+          "slug": "backup-restore",
+          "slug_permanent": "backup-restore",
+          "title": "Backup & Restore Programs for macOS - FileCR",
+          "description": "Free download tools are designed to back up and restore critical data, files, and folders on Apple computers, ensuring data security and protection against data loss."
+        },
+        {
+          "name": "Data Recovery",
+          "slug": "data-recovery",
+          "slug_permanent": "data-recovery",
+          "title": "Data Recovery Programs for macOS - FileCR",
+          "description": "Free download data recovery programs for macOS to recover lost, deleted, or corrupted data, files, and partitions on Apple computers."
+        },
+        {
+          "name": "Developer Tools",
+          "slug": "developer-tools",
+          "slug_permanent": "developer-tools",
+          "title": "Developer Tools & Programs for macOS - FileCR",
+          "description": "Free download database manager and web server programs for macOS to manage, administer, and host databases and web applications."
+        },
+        {
+          "name": "Download Managers",
+          "slug": "file-downloader",
+          "slug_permanent": "file-downloader",
+          "title": "Download Managers Programs for macOS - FileCR",
+          "description": "Free download programs for macOS designed to manage, schedule, and accelerate downloading of files."
+        },
+        {
+          "name": "Educational & Business",
+          "slug": "educational-business",
+          "slug_permanent": "educational-business",
+          "title": "Educational & Business Programs for macOS - FileCR",
+          "description": "Free download programs for macOS to support academic and professional tasks such as note-taking, productivity, accounting, and project management."
+        },
+        {
+          "name": "Engineering & Simulation",
+          "slug": "simulation",
+          "slug_permanent": "simulation",
+          "title": "Engineering & Simulation Programs for macOS - FileCR",
+          "description": "Free download programs designed to support engineering and scientific simulations and modeling on Apple computers."
+        },
+        {
+          "name": "Graphics Editors",
+          "slug": "graphics-multimedia",
+          "slug_permanent": "graphics-multimedia",
+          "title": "Graphics Editors Programs for macOS - FileCR",
+          "description": "Free download software to create, edit, and enhance digital graphics and images on Apple computers, enabling efficient and creative graphic design."
+        },
+        {
+          "name": "Mobile Phone Utilities",
+          "slug": "mobile-phone-utilities",
+          "slug_permanent": "mobile-phone-utilities",
+          "title": "Mobile Phone Utilities for macOS - FileCR",
+          "description": "Free download applications to manage, backup, and transfer data, media, and software between mobile devices and Apple computers."
+        },
+        {
+          "name": "Multimedia Tools",
+          "slug": "multimedia-tools",
+          "slug_permanent": "multimedia-tools",
+          "title": "Multimedia Tools & Programs for macOS - FileCR",
+          "description": "Free download software to create, edit, and playback multimedia content such as audio, video, and images on Apple computers."
+        },
+        {
+          "name": "Office & PDF",
+          "slug": "office-tools",
+          "slug_permanent": "office-tools",
+          "title": "Office & PDF Programs for macOS - FileCR",
+          "description": "Free download apps to support office productivity and document management tasks such as word processing, spreadsheets, presentations, and PDF editing."
+        },
+        {
+          "name": "Tools & Utilities",
+          "slug": "utilities-tools",
+          "slug_permanent": "utilities-tools",
+          "title": "Tools & Utilities Programs for macOS - FileCR",
+          "description": "Free download apps to perform system maintenance, optimization, and customization tasks on Apple computers."
+        },
+        {
+          "name": "Video Editors",
+          "slug": "video-editing",
+          "slug_permanent": "video-editing",
+          "title": "Video Editor Programs for macOS - FileCR",
+          "description": "Free download software to create, edit and enhance video content on Apple computers enables efficient and creative video production."
+        },
+        {
+          "name": "Web & Programming",
+          "slug": "web-development",
+          "slug_permanent": "web-development",
+          "title": "Web & Programming Programs for macOS - FileCR",
+          "description": "Free download apps for developers to write, test, and debug software code on Apple computers, enabling efficient development and deployment."
+        }
+      ]
+    },
+    "all": [
+      {
+        "name": "Android",
+        "slug": "android",
+        "slug_permanent": "android",
+        "title": "Android Apps & Games (APK) Free Download - FileCR",
+        "description": "Get the best Premium Android apps & games (APKs) for free now. All apps and games are unlocked & ad-free.",
+        "children": [
+          {
+            "name": "Apps",
+            "slug": "apps",
+            "slug_permanent": "apps",
+            "title": "Apps for Android - Pro / Premium MOD Unlocked & Ad-Free - FileCR",
+            "description": "Free download Pro / Premium MOD Version Unlocked Ad-Free Apps (APKs) for  Android Phones and Tablets.",
+            "children": [
+              {
+                "name": "Tools & Utilities",
+                "slug": "tools-utilities-apps",
+                "slug_permanent": "tools-utilities-apps",
+                "title": "Tools & Utilities Apps (APKs) for Android- FileCR",
+                "description": "Free download a variety of useful apps that can help you customize and streamline your Android experience."
+              },
+              {
+                "name": "Productivity",
+                "slug": "productivity",
+                "slug_permanent": "productivity",
+                "title": "Productivity Premium Apps (APKs) for Android- FileCR",
+                "description": "Free download Productivity Android apps that can significantly improve your daily workflow and efficiency."
+              },
+              {
+                "name": "News & Weather",
+                "slug": "news-weather",
+                "slug_permanent": "news-weather",
+                "title": "News & Weather Premium Apps (APKs) for Android- FileCR",
+                "description": "Free Download News & Weather Android apps are an excellent way to stay informed and up-to-date on the latest news and weather updates."
+              },
+              {
+                "name": "Fitness & Health",
+                "slug": "fitness-health",
+                "slug_permanent": "fitness-health",
+                "title": "Fitness & Health Premium Apps (APKs) for Android- FileCR",
+                "description": "Free download Fitness & Health Android apps that can help you achieve your fitness goals and improve your overall health and well-being."
+              },
+              {
+                "name": "Antivirus & Security",
+                "slug": "antivirus-security",
+                "slug_permanent": "antivirus-security",
+                "title": "Antivirus & Security Premium Apps (APKs) for Android- FileCR",
+                "description": "Free download Antivirus & Security Android apps to protect your device from harmful viruses, malware, and other online threats."
+              },
+              {
+                "name": "Wireless & Network Tools",
+                "slug": "wireless-network-tools",
+                "slug_permanent": "wireless-network-tools",
+                "title": "Wireless & Network Tools Premium Apps for Android- FileCR",
+                "description": "Free download Wireless & Network Tools Android apps that can help you optimize your device's connectivity and network performance."
+              },
+              {
+                "name": "Educational",
+                "slug": "educational-apps",
+                "slug_permanent": "educational-apps",
+                "title": "Educational and Learning Premium Apps for Android- FileCR",
+                "description": "Free download of educational Android apps is a convenient and cost-effective way for students to access learning materials on their mobile devices."
+              },
+              {
+                "name": "Audio & Music",
+                "slug": "audio-video-players",
+                "slug_permanent": "audio-video-players",
+                "title": "Audio & Music Premium Apps (APKs) for Android- FileCR",
+                "description": "Free download audio and music apps for music streaming, podcast listening, and music production to enhance your listening and creative experiences."
+              },
+              {
+                "name": "Photography & Design",
+                "slug": "photography",
+                "slug_permanent": "photography",
+                "title": "Photography & Design Premium Apps (APKs) for Android- FileCR",
+                "description": "Free download photography and design Android apps & tools that enable users to create stunning visuals and enhance their creativity on the go."
+              },
+              {
+                "name": "Entertainment",
+                "slug": "entertainment",
+                "slug_permanent": "entertainment",
+                "title": "Entertainment Premium Apps (APKs) for Android- FileCR",
+                "description": "Free download variety of entertainment apps, such as movie streaming services and social media platforms, provides users a fun and engaging way to pass the time."
+              },
+              {
+                "name": "Maps & GPS",
+                "slug": "maps-gps",
+                "slug_permanent": "maps-gps",
+                "title": "Maps & GPS Premium Apps (APKs) for Android- FileCR",
+                "description": "Free download maps and GPS Android apps offer users a reliable and convenient way to navigate and explore the world, with real-time traffic updates and location sharing."
+              },
+              {
+                "name": "Communication",
+                "slug": "communication",
+                "slug_permanent": "communication",
+                "title": "Communication Premium Apps (APKs) for Android- FileCR",
+                "description": "Free download communication Android apps offer users a range of tools to stay connected with friends, family, and colleagues, including messaging, voice and video calls, and social media platforms."
+              },
+              {
+                "name": "Video Editors",
+                "slug": "video-editing-apps",
+                "slug_permanent": "video-editing-apps",
+                "title": "Video Editors Premium Apps (APKs) for Android- FileCR",
+                "description": "Free download video editing Android apps provide users with features and tools to create and edit professional-looking videos on their mobile devices."
+              },
+              {
+                "name": "Mobile Browsers",
+                "slug": "mobile-browsers",
+                "slug_permanent": "mobile-browsers",
+                "title": "Mobile Web Browsers Premium Apps (APKs) for Android- FileCR",
+                "description": "Free download web browser Android apps for a fast and convenient way to browse the internet on mobile devices."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "MacOS",
+        "slug": "macos",
+        "slug_permanent": "macos",
+        "title": "MacOS Professional & Premium Programs Free Download - FileCR",
+        "description": "Free Download MacOS apps and utilities to programs for creatives and professionals because not all the best Mac apps will be found on the App Store.",
+        "children": [
+          {
+            "name": "Audio & Music",
+            "slug": "audio-editors",
+            "slug_permanent": "audio-editors",
+            "title": "Audio & Music Programs for macOS - FileCR",
+            "description": "Free download applications designed for recording, editing, mixing and producing music and audio content on Apple computers."
+          },
+          {
+            "name": "Backup & Restore",
+            "slug": "backup-restore",
+            "slug_permanent": "backup-restore",
+            "title": "Backup & Restore Programs for macOS - FileCR",
+            "description": "Free download tools are designed to back up and restore critical data, files, and folders on Apple computers, ensuring data security and protection against data loss."
+          },
+          {
+            "name": "Data Recovery",
+            "slug": "data-recovery",
+            "slug_permanent": "data-recovery",
+            "title": "Data Recovery Programs for macOS - FileCR",
+            "description": "Free download data recovery programs for macOS to recover lost, deleted, or corrupted data, files, and partitions on Apple computers."
+          },
+          {
+            "name": "Developer Tools",
+            "slug": "developer-tools",
+            "slug_permanent": "developer-tools",
+            "title": "Developer Tools & Programs for macOS - FileCR",
+            "description": "Free download database manager and web server programs for macOS to manage, administer, and host databases and web applications."
+          },
+          {
+            "name": "Download Managers",
+            "slug": "file-downloader",
+            "slug_permanent": "file-downloader",
+            "title": "Download Managers Programs for macOS - FileCR",
+            "description": "Free download programs for macOS designed to manage, schedule, and accelerate downloading of files."
+          },
+          {
+            "name": "Educational & Business",
+            "slug": "educational-business",
+            "slug_permanent": "educational-business",
+            "title": "Educational & Business Programs for macOS - FileCR",
+            "description": "Free download programs for macOS to support academic and professional tasks such as note-taking, productivity, accounting, and project management."
+          },
+          {
+            "name": "Engineering & Simulation",
+            "slug": "simulation",
+            "slug_permanent": "simulation",
+            "title": "Engineering & Simulation Programs for macOS - FileCR",
+            "description": "Free download programs designed to support engineering and scientific simulations and modeling on Apple computers."
+          },
+          {
+            "name": "Graphics Editors",
+            "slug": "graphics-multimedia",
+            "slug_permanent": "graphics-multimedia",
+            "title": "Graphics Editors Programs for macOS - FileCR",
+            "description": "Free download software to create, edit, and enhance digital graphics and images on Apple computers, enabling efficient and creative graphic design."
+          },
+          {
+            "name": "Mobile Phone Utilities",
+            "slug": "mobile-phone-utilities",
+            "slug_permanent": "mobile-phone-utilities",
+            "title": "Mobile Phone Utilities for macOS - FileCR",
+            "description": "Free download applications to manage, backup, and transfer data, media, and software between mobile devices and Apple computers."
+          },
+          {
+            "name": "Multimedia Tools",
+            "slug": "multimedia-tools",
+            "slug_permanent": "multimedia-tools",
+            "title": "Multimedia Tools & Programs for macOS - FileCR",
+            "description": "Free download software to create, edit, and playback multimedia content such as audio, video, and images on Apple computers."
+          },
+          {
+            "name": "Office & PDF",
+            "slug": "office-tools",
+            "slug_permanent": "office-tools",
+            "title": "Office & PDF Programs for macOS - FileCR",
+            "description": "Free download apps to support office productivity and document management tasks such as word processing, spreadsheets, presentations, and PDF editing."
+          },
+          {
+            "name": "Tools & Utilities",
+            "slug": "utilities-tools",
+            "slug_permanent": "utilities-tools",
+            "title": "Tools & Utilities Programs for macOS - FileCR",
+            "description": "Free download apps to perform system maintenance, optimization, and customization tasks on Apple computers."
+          },
+          {
+            "name": "Video Editors",
+            "slug": "video-editing",
+            "slug_permanent": "video-editing",
+            "title": "Video Editor Programs for macOS - FileCR",
+            "description": "Free download software to create, edit and enhance video content on Apple computers enables efficient and creative video production."
+          },
+          {
+            "name": "Web & Programming",
+            "slug": "web-development",
+            "slug_permanent": "web-development",
+            "title": "Web & Programming Programs for macOS - FileCR",
+            "description": "Free download apps for developers to write, test, and debug software code on Apple computers, enabling efficient development and deployment."
+          }
+        ]
+      },
+      {
+        "name": "Windows",
+        "slug": "ms-windows",
+        "slug_permanent": "windows",
+        "title": "Windows software, drivers & operating system - FileCR",
+        "description": "Free download Windows programs, plugins, codecs, drivers, tools, utilities, gaming tools, mobile phone tools, and operating systems.",
+        "children": [
+          {
+            "name": "Antivirus & Security",
+            "slug": "security-privacy",
+            "slug_permanent": "security-privacy",
+            "title": "Antivirus & Security Programs for Windows - FileCR",
+            "description": "Free Download Anti-Virus, Anti-Malware, Firewall, Anti-Ransomware, Anti-Spam, Trojan remover, Anti-Spyware, and Parental control programs."
+          },
+          {
+            "name": "Audio & Music",
+            "slug": "audio-music",
+            "slug_permanent": "audio-music",
+            "title": "Audio & Music Programs for Windows - FileCR",
+            "description": "Free Download sound editing software to edit music, voice, wav, mp3, or other audio. Music tools for advanced and professional music producers."
+          },
+          {
+            "name": "Backup & Recovery",
+            "slug": "backup-tools",
+            "slug_permanent": "backup-tools",
+            "title": "Backup & Recovery Programs for Windows - FileCR",
+            "description": "Free Download backup and recovery software ensure that all your critical data remains in your hands and is available when needed."
+          },
+          {
+            "name": "Data Recovery",
+            "slug": "datarecovery",
+            "slug_permanent": "datarecovery",
+            "title": "Data Recovery Programs for Windows - FileCR",
+            "description": "Free download the best data recovery software to recover all file types and formats, such as lost or deleted music files, documents, photos, videos, emails, etc."
+          },
+          {
+            "name": "Desktop Enhancement",
+            "slug": "desktop-enhancement",
+            "slug_permanent": "desktop-enhancement",
+            "title": "Desktop Enhancement Programs for Windows - FileCR",
+            "description": "Free download software to enhance the Windows Start menu, your file manager, search capabilities, keyboard shortcuts, system menus, folder organization, and more."
+          },
+          {
+            "name": "Developer Tools",
+            "slug": "database-server",
+            "slug_permanent": "database-server",
+            "title": "Developer & Web Server Tools for Windows - FileCR",
+            "description": "Free download software and tools for SQL, MySQL, queries, tables, input, FTP, local-server, SFTP, client, web server, SSH, port, etc."
+          },
+          {
+            "name": "Download Managers",
+            "slug": "download-managers",
+            "slug_permanent": "download-managers",
+            "title": "Download Managers Software for Windows - FileCR",
+            "description": "Free download programs to speed up your downloading, resume downloading, video downloading, YouTube video downloading and much more."
+          },
+          {
+            "name": "Drivers & Firmware",
+            "slug": "drivers-firmware",
+            "slug_permanent": "drivers-firmware",
+            "title": "Drivers & Firmware Software for Windows - FileCR",
+            "description": "Free download drivers & firmware further programs to auto-install and update system drivers, auto driver finder programs, and more."
+          },
+          {
+            "name": "Educational & Business",
+            "slug": "educational",
+            "slug_permanent": "educational",
+            "title": "Educational & Business Software for Windows - FileCR",
+            "description": "Free download library, books indexing, charts, presentation, math, algebra, translator, data-analyzer, dictionaries, and other educational stuff."
+          },
+          {
+            "name": "Engineering & Simulation",
+            "slug": "engineering",
+            "slug_permanent": "engineering",
+            "title": "Engineering & Simulation Software for Windows - FileCR",
+            "description": "Free download software for engineering design, mechanical, electrical, and structural engineering, including CAD programs."
+          },
+          {
+            "name": "File Compression",
+            "slug": "file-compression",
+            "slug_permanent": "file-compression",
+            "title": "File Compression Software for Windows - FileCR",
+            "description": "Free download programs for ZIP, RAR, Zipx, 7z, TAR, GZIP, VHD, XZ, split-Zip, MP3-Compression, encryption, etc."
+          },
+          {
+            "name": "Gaming Tools",
+            "slug": "gaming-tools",
+            "slug_permanent": "gaming-tools",
+            "title": "Gaming Tools & Programs for Windows - FileCR",
+            "description": "Free download applications that, combined, work to provide the smoothest gaming experience on your Windows PC."
+          },
+          {
+            "name": "Graphics & Design",
+            "slug": "graphics-design",
+            "slug_permanent": "graphics-design",
+            "title": "Graphics & Design Software for Windows - FileCR",
+            "description": "Free download photo editor, photo effects, layout designer, photography plugin, logo creator, and other graphics-related programs."
+          },
+          {
+            "name": "Hard Disk Tools",
+            "slug": "hdd-tools",
+            "slug_permanent": "hdd-tools",
+            "title": "Hard Disk Tools & Software for Windows - FileCR",
+            "description": "Free download programs for SSD & Hard disk partitioning, resizing, disk management, defrag & fragmentation."
+          },
+          {
+            "name": "Internet Utilities",
+            "slug": "internet",
+            "slug_permanent": "internet",
+            "title": "Internet Tools & Utilities Programs for Windows - FileCR",
+            "description": "Free download password manager, email client, cloud storage manager, messaging apps, social media tools, VPN, and more."
+          },
+          {
+            "name": "Mobile Phone Utilities",
+            "slug": "mobile-tools",
+            "slug_permanent": "mobile-tools",
+            "title": "Mobile Phone Tool & Utilities Programs for Windows - FileCR",
+            "description": "Download smartphone manager, android emulators, android backup, iOS and iPhone manager, phone optimizer, and photo data recovery programs."
+          },
+          {
+            "name": "Multimedia",
+            "slug": "multimedia",
+            "slug_permanent": "multimedia",
+            "title": "Multimedia Software for Windows - FileCR",
+            "description": "Free Download video & audio player, video format converter, disc burner, slideshow creator, audio converter, movie manager, screen capture and recorder, etc."
+          },
+          {
+            "name": "Network & WiFi",
+            "slug": "network",
+            "slug_permanent": "network",
+            "title": "Network, Wireless & WiFi Software for Windows - FileCR",
+            "description": "Free Download wi-fi and network analyzer, network protocol analyzer, vpn & proxy tool, FTP client, SSH client, remote desktop tools, and more."
+          },
+          {
+            "name": "Office & PDF",
+            "slug": "office-pdf",
+            "slug_permanent": "office-pdf",
+            "title": "Office, PDF & Productivity Programs for Windows - FileCR",
+            "description": "Free Download all editions of Microsoft Office, pdf viewer, pdf creator, pdf editor, pdf convert, mail converter, other office suites, text-to-speech, OCR, and many more."
+          },
+          {
+            "name": "Operating System",
+            "slug": "operating-system",
+            "slug_permanent": "operating-system",
+            "title": "Operating System & modified versions of Windows - FileCR",
+            "description": "Free download Windows 10, Windows 8.1, Windows 7, Windows XP, Kali Linux, other Linux distros, and modified versions of Windows."
+          },
+          {
+            "name": "Tools & Utilities",
+            "slug": "tools-utilities",
+            "slug_permanent": "tools-utilities",
+            "title": "Tools & Utilities Programs for Windows - FileCR",
+            "description": "Free Download windows system optimizer, PC booster, system junk cleaner, windows and office activators, windows manager, and many other tools."
+          },
+          {
+            "name": "Video Editors",
+            "slug": "video-editors",
+            "slug_permanent": "video-editors",
+            "title": "Video Editors Programs for Windows - FileCR",
+            "description": "Free Download video editing programs, video editing and effect plugins, motion building programs, flash and animation builder tools, and more."
+          },
+          {
+            "name": "Web & Programming",
+            "slug": "programming",
+            "slug_permanent": "programming",
+            "title": "Web & Programming Software for Windows - FileCR",
+            "description": "Free Download website builder, code editor, .net tools, seo analyzer, apps builder, web designer, code analyzer, website monitor and many other useful tools."
+          },
+          {
+            "name": "Web Browsers",
+            "slug": "web-browsers",
+            "slug_permanent": "web-browsers",
+            "title": "Web Browsers Programs for Windows - FileCR",
+            "description": "Free Download the latest offline installer of all famous web browsers for Windows like Google Chrome, Mozilla Firefox, Opera, Tor, and other chromium-based browsers."
+          }
+        ]
+      }
+    ]
+  },
+  "__N_SSG": true
+}

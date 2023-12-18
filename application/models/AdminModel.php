@@ -60,6 +60,22 @@ class AdminModel extends CI_Model {
         return $query->num_rows();
     }
 
+    public function softwareCount()
+    {
+            $softwares = $this->AdminModel->getSoftwares();
+            $extractedData = [];
+            foreach ($softwares as $category) {
+            $extractedData[$category['slug_permanent']] = $this->db->select('*')
+                                    ->where('sub_category_slug', $category['slug_permanent'])
+                                    ->get('softwares')
+                                    ->num_rows();
+            }
+            return $extractedData;
+     
+
+    }
+
+
 
 	public function get_count() {
         return $this->db->count_all('blogs');
@@ -106,7 +122,81 @@ class AdminModel extends CI_Model {
 
 
 
+    public function getSoftwareDetails($category_slug, $softwareslug) {
+    try {
+        $url = "https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/$category_slug/$softwareslug.json?categorySlug=$category_slug&postSlug=$softwareslug";
 
+        $jsonResponse = file_get_contents($url);
+
+        if ($jsonResponse === false) {
+            throw new Exception("Failed to fetch data from $url");
+        }
+        $data = json_decode($jsonResponse, true);
+        $allSoftData = $data["pageProps"]["post"];
+        $postId = $allSoftData["id"];
+        $existingRecord = $this->db->get_where('softwaredata', array('post_id' => $postId))->row_array();
+        if ($existingRecord) {
+            $finalRecord = $this->db
+                                ->select('softwaredata.*, softwares.*')  // Select columns from both tables
+                                ->from('softwaredata')
+                                ->join('softwares', 'softwaredata.slug = softwares.slug')
+                                ->where('softwaredata.post_id', $postId)
+                                ->get()
+            ->row_array();
+            // print_r($existingRecord);
+
+            return $finalRecord;
+            
+        } else {
+            $downloadurl = $this->getDownloadLink($allSoftData['downloads'][0]['links'][0]['id']);
+            $dataToInsert = array(
+                'post_id' => $allSoftData["id"],
+                'title' => $allSoftData["title"],
+                'extra_title' => $allSoftData["extra_title"],
+                'slug' => $allSoftData["slug"],
+                'excerpt' => $allSoftData["excerpt"],
+                'article' => $allSoftData["article"],
+                'license' => $allSoftData["license"],
+                'downloads_count' => $allSoftData["downloads_count"],
+                'seo_title' => $allSoftData["seo"]['title'],
+                'seo_description' => $allSoftData["seo"]['description'],
+                'creator_name' => $allSoftData["creators"][0]['name'],
+                'creator_url' => $allSoftData["creators"][0]['url'],
+                'version' => $allSoftData['downloads'][0]['version'],
+                'filename' => $allSoftData['downloads'][0]['filename'],
+                'releaseDate' => $allSoftData['downloads'][0]['releaseDate'],
+                'download_id' => $allSoftData['downloads'][0]['links'][0]['id'],
+                'download_url' => $downloadurl
+            );
+            $this->db->insert('softwaredata', $dataToInsert);  
+
+            $finalRecord = $this->db
+                                ->select('softwaredata.*, softwares.*')  // Select columns from both tables
+                                ->from('softwaredata')
+                                ->join('softwares', 'softwaredata.slug = softwares.slug')
+                                ->where('softwaredata.post_id', $postId)
+                                ->get()
+                                ->row_array();
+            // print_r($finalRecord);
+
+            return $finalRecord;
+            // echo"<pre>";
+        }
+    } catch (Exception $e) {
+        // Handle the error, log it, or simply continue to the next URL
+        echo "Error: " . $e->getMessage() . PHP_EOL;
+    }
+    }
+
+///// scrap download link of softwares inside data and save to db 
+    
+    private function getDownloadLink($id) {
+        $url = "    =$id";
+        $jsonResponse = file_get_contents($url);
+        $data = json_decode($jsonResponse, true);
+        $url = $data['url'];
+        return $url;
+    }
 
 
 
