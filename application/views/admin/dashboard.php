@@ -12,15 +12,22 @@
   <main class="main-content position-relative border-radius-lg ">
     <div class="container-fluid py-4">
       <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+        <?php
+                $counter = 0; // Initialize a counter variable
+ 
+        foreach ($dataCount as $key => $value) {
+           if ($counter >= 6) {
+            break;
+        } ?>
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
             <div class="card-body p-3">
               <div class="row">
                 <div class="col-8">
                   <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Softwares</p>
+                    <p class="text-sm mb-0 text-uppercase font-weight-bold"><?php echo $key ?></p>
                     <h5 class="font-weight-bolder">
-                      <?php echo $totalSoftwares ?>
+                      <?php echo $value ?>
                     </h5>
                     <!-- <p class="mb-0">
                       <span class="text-success text-sm font-weight-bolder">+55%</span>
@@ -37,83 +44,8 @@
             </div>
           </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Blogs</p>
-                    <h5 class="font-weight-bolder">
-                    <?php echo $totalBlogs ?>
-                      
-                    </h5>
-                    <!-- <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+3%</span>
-                      since last week
-                    </p> -->
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
-                    <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Users</p>
-                    <h5 class="font-weight-bolder">
-                    <?php echo $totalUsers?>
-
-                    </h5>
-                    <!-- <p class="mb-0">
-                      <span class="text-danger text-sm font-weight-bolder">-2%</span>
-                      since last quarter
-                    </p> -->
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
-                    <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6">
-          <div class="card">
-            <div class="card-body p-3">
-              <div class="row">
-                <div class="col-8">
-                  <div class="numbers">
-                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Software Category</p>
-                    <h5 class="font-weight-bolder">
-                    <?php echo $totalCategory?>
-
-                    </h5>
-                    <!-- <p class="mb-0">
-                      <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                    </p> -->
-                  </div>
-                </div>
-                <div class="col-4 text-end">
-                  <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
-                    <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <?php  $counter++; 
+      } ?>
       </div>
       <div class="row mt-4">
         <div class="col-lg-12 mb-lg-0 mb-4">
@@ -280,7 +212,7 @@
             </div>
             <div class="card-body p-3">
               <ul class="list-group">
-                <?php foreach ($softwareCount as $categoryName => $count) { ?>
+                <?php foreach ($dataCount['totalSoftwareCategoriesCount'] as $categoryName => $count) { ?>
                   <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg">
                   <div class="d-flex align-items-center">
                     <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">

@@ -24,9 +24,9 @@ class Welcome extends CI_Controller {
 		$this->load->view('index', $finalData);
 	}
 		
-	public function product($category_slug, $softwareslug){
+	public function product($softwareslug){
 		$finalData['mainNav'] = $this->GetQuery->getNavData(); 
-		$finalData['softData'] = $this->GetQuery->getSoftwareDetails($category_slug, $softwareslug);
+		$finalData['softData'] = $this->GetQuery->getProductDetails($softwareslug);
         // echo "<pre>";
         // print_r($finalData['softData']);
 		$this->load->view('product', $finalData);

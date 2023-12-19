@@ -15,7 +15,7 @@
                             <span class="badge-<?php echo $windows['badge'] ?>" data-badge="latest"></span>
                                 <img alt="<?php echo $windows['title'] ?>" loading="lazy" width="56" height="56" decoding="async" data-nimg="1" style="color:transparent;min-width:auto;width:45;height:45" src="<?php echo $windows['icon'] ?>" />
                             <div class="card_info__LY5ob">
-                                <a class="card_title__az7G7" href="<?php echo base_url('product/').urlencode($windows['category_slug']).'/'.urlencode($windows['slug']) ?>"><?php echo $windows['title'] ?></a>
+                                <a class="card_title__az7G7" href="<?php echo base_url('product/').urlencode($windows['slug']) ?>"><?php echo $windows['title'] ?></a>
                                 <p class="card_desc__b66Ca"><?php echo $windows['excerpt'] ?></p>
                                 <a class="card_category__4DBde" href=""><?php echo $windows['sub_category_title'] ?></a>
                             </div>
@@ -60,7 +60,7 @@
                             <span class="badge-<?php echo $windows['badge'] ?>" data-badge="latest"></span>
                                 <img alt="<?php echo $windows['title'] ?>" loading="lazy" width="56" height="56" decoding="async" data-nimg="1" style="color:transparent;min-width:auto;width:45;height:45" src="<?php echo $windows['icon'] ?>" />
                             <div class="card_info__LY5ob">
-                                <a class="card_title__az7G7" href="<?php echo base_url('product/').urlencode($windows['category_slug']).'/'.urlencode($windows['slug']) ?>"><?php echo $windows['title'] ?></a>
+                                <a class="card_title__az7G7" href="<?php echo base_url('product/').urlencode($windows['slug']) ?>"><?php echo $windows['title'] ?></a>
                                 <p class="card_desc__b66Ca"><?php echo $windows['excerpt'] ?></p>
                                 <a class="card_category__4DBde" href=" "><?php echo $windows['sub_category_title'] ?></a>
                             </div>
@@ -101,7 +101,7 @@
                             <span class="badge-<?php echo $windows['badge'] ?>" data-badge="latest"></span>
                         <img alt="<?php echo $windows['title'] ?>" loading="lazy" width="56" height="56" decoding="async" data-nimg="1" style="color:transparent;min-width:auto;width:45;height:45" src="<?php echo $windows['icon'] ?>" />
                             <div class="card_info__LY5ob">
-                                <a class="card_title__az7G7" href="<?php echo base_url('product/').urlencode($windows['category_slug']).'/'.urlencode($windows['slug']) ?>"><?php echo $windows['title'] ?></a>
+                                <a class="card_title__az7G7" href="<?php echo base_url('product/').urlencode($windows['slug']) ?>"><?php echo $windows['title'] ?></a>
                                 <p class="card_desc__b66Ca"><?php echo $windows['excerpt'] ?></p>
                                 <a class="card_category__4DBde" href=" "><?php echo $windows['sub_category_title'] ?></a>
                             </div>

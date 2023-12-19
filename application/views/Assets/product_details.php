@@ -3,7 +3,7 @@
       <main class="main">
          <div class="post-wrap">
             <article class="article">
-               <?php echo $softData['article'] ?>
+               <?php echo $softData[0]['article'] ?>
             </article>
          </div>
          <!-- <div class="post-wrap">
@@ -36,14 +36,14 @@
       </main>
       <aside class="sidebar">
          <div class="widget_wrap__lfits  download-info md-none">
-            <div class="download-size"><?php echo $softData['download_size'] ?></div>
+            <div class="download-size"><?php echo $softData[0]['download_size'] ?></div>
             <div class="filter-options">
                <div class="form-group">
                   <div class="custom-input">
                     <span></span></div>
                   <label for="InternalDownload Unlocked APK" class="active"><span class="details"></span></label>
                </div>
-               <a href="<?php echo $softData['download_url'] ?>"class="btn-primary_dark full">Direct Download</a>
+               <a href="<?php echo $softData[0]['download_url'] ?>"class="btn-primary_dark full">Direct Download</a>
                <div class="other-buttons">
                   <button class="btn fav  " type="button" aria-label="Add to Favorite">
                      <i class="icon ">
@@ -69,12 +69,12 @@
             <div class="widget_header__vge_D">
                <h3>Product Information</h3>
             </div>
-            <div class="info_item__0IxQW"><span class="info_label__TewQ_">File name</span><span class="info_data__N609l "><?php echo $softData['filename'] ?></span></div>
-            <div class="info_item__0IxQW"><span class="info_label__TewQ_">Created by</span><span class="info_data__N609l "><a href="<?php echo $softData['creator_url'] ?>" target="_blank" rel="noreferrer"><?php echo $softData['creator_name'] ?></a></span></div>
-            <div class="info_item__0IxQW"><span class="info_label__TewQ_">Version</span><span class="info_data__N609l "><?php echo $softData['version'] ?></span></div>
-            <div class="info_item__0IxQW"><span class="info_label__TewQ_">Release Date</span><span class="info_data__N609l "><?php echo $softData['releaseDate'] ?></span></div>
-            <div class="info_item__0IxQW"><span class="info_label__TewQ_">License Type</span><span class="info_data__N609l info_languages__RF79O"><span><?php echo $softData['license'] ?></span></span></div>
-            <div class="info_item__0IxQW"><span class="info_label__TewQ_">Total Downloads</span><span class="info_data__N609l "><?php echo $softData['downloads_count'] ?></span></div>
+            <div class="info_item__0IxQW"><span class="info_label__TewQ_">File name</span><span class="info_data__N609l "><?php echo $softData[0]['filename'] ?></span></div>
+            <div class="info_item__0IxQW"><span class="info_label__TewQ_">Created by</span><span class="info_data__N609l "><a href="<?php echo $softData[0]['creator_url'] ?>" target="_blank" rel="noreferrer"><?php echo $softData[0]['creator_name'] ?></a></span></div>
+            <div class="info_item__0IxQW"><span class="info_label__TewQ_">Version</span><span class="info_data__N609l "><?php echo $softData[0]['version'] ?></span></div>
+            <div class="info_item__0IxQW"><span class="info_label__TewQ_">Release Date</span><span class="info_data__N609l "><?php echo $softData[0]['releaseDate'] ?></span></div>
+            <div class="info_item__0IxQW"><span class="info_label__TewQ_">License Type</span><span class="info_data__N609l info_languages__RF79O"><span><?php echo $softData[0]['license'] ?></span></span></div>
+            <div class="info_item__0IxQW"><span class="info_label__TewQ_">Total Downloads</span><span class="info_data__N609l "><?php echo $softData[0]['downloads_count'] ?></span></div>
             <div class="tags_list__UUDK6">    <a class="tags_link__X8Gf_">Thanks for Downloading!!</a></div>
          </div>
          </aside>

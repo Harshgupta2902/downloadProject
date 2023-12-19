@@ -10,10 +10,10 @@ class Admin extends CI_Controller
         $this->load->database();
         $this->load->helper('url');
         $this->load->model('AdminModel');
+        $this->load->model('CountModel');
         $this->load->helper('form');
         $this->load->library('session'); // Load the session library
         $this->load->library('form_validation'); // Set rules for each field
-
         $this->load->library("pagination");
 
     }
@@ -48,24 +48,20 @@ class Admin extends CI_Controller
         }
     }
 
-    
-
-    public function dashboard(){
+    public function dashboard()
+    {
         if ($this->session->userdata('user_id')) {
-            $dashboard['totalBlogs'] = $this->AdminModel->getTotalBlogs();
-            $dashboard['totalSoftwares'] = $this->AdminModel->getTotalSoftwares();
-            $dashboard['totalUsers'] = $this->AdminModel->getTotalUsers();
-            $dashboard['totalCategory'] = $this->AdminModel->getTotalCategory();
-            $dashboard['softwareCount'] = $this->AdminModel->softwareCount();
+            $dashboard['dataCount'] = $this->CountModel->dataCount();
             // echo"<pre>";
-            // print_r($dashboard['softwareCount']);
+            // print_r($dashboard);
             $this->load->view('admin/dashboard', $dashboard);
         } else {
             redirect('login');
         }
     }
 
-    public function comments(){
+    public function comments()
+    {
         if ($this->session->userdata('user_id')) {
             $comments['comments'] = $this->db->query('SELECT * FROM comments ORDER BY timestamp DESC')->result_array();
             // echo"<pre>";
@@ -76,38 +72,39 @@ class Admin extends CI_Controller
         }
     }
 
-    public function category(){
+    public function category()
+    {
         $data = $this->AdminModel->get_sorted_category();
         // echo "<pre>";
         // print_r($data);
         $this->load->view('admin/category', $data);
     }
-    
-    public function softwares(){
+
+    public function softwares()
+    {
         if ($this->session->userdata('user_id')) {
             $softwares = $this->AdminModel->getSoftwares();
 
             $extractedData = [];
             foreach ($softwares as $category) {
-            $extractedData[$category['slug_permanent']] = $this->db->select('*')
-                                    ->where('sub_category_slug', $category['slug_permanent'])
-                                    ->get('softwares')
-                                    ->result_array();
+                $extractedData[$category['slug_permanent']] = $this->db->select('*')
+                    ->where('sub_category_slug', $category['slug_permanent'])
+                    ->get('softwares')
+                    ->result_array();
             }
-            echo"<pre>";
+            echo "<pre>";
             print_r($extractedData);
-            // $this->load->view('admin/softwares', $softwares);   
+            // $this->load->view('admin/softwares', $softwares);
         } else {
             redirect('login');
         }
 
     }
 
+//// Blogs Section
 
-
-//// Blogs Section 
-
-    public function blogs(){
+    public function blogs()
+    {
         if ($this->session->userdata('user_id')) {
             $data['blogs'] = $this->AdminModel->getBlog();
             $this->load->view('admin/blogs', $data);
@@ -116,7 +113,8 @@ class Admin extends CI_Controller
         }
     }
 
-    public function deleteBlog($id){
+    public function deleteBlog($id)
+    {
         if ($this->session->userdata('user_id')) {
             $this->db->where('id', $id);
             $this->db->delete('blogs');
@@ -174,7 +172,8 @@ class Admin extends CI_Controller
 
     }
 
-    public function createBlog(){
+    public function createBlog()
+    {
         if ($this->session->userdata('user_id')) {
             $this->load->view('admin/createBlog');
         } else {
@@ -183,7 +182,8 @@ class Admin extends CI_Controller
 
     }
 
-    public function save_blog(){
+    public function save_blog()
+    {
         if ($this->session->userdata('user_id')) {
             $data = array(
                 'title' => $this->input->post('title'),
@@ -205,7 +205,8 @@ class Admin extends CI_Controller
 
     }
 
-    public function update_blog($id){
+    public function update_blog($id)
+    {
         if ($this->session->userdata('user_id')) {
             $data = array(
                 'title' => $this->input->post('title'),
@@ -226,7 +227,8 @@ class Admin extends CI_Controller
 
     }
 
-    public function editBlog($id){
+    public function editBlog($id)
+    {
         if ($this->session->userdata('user_id')) {
             $blogs['blogData'] = $this->db->query("select * from blogs where id = '$id' ")->result_array();
             // $this->load->view('admin/editBlog',$blogs);
@@ -237,245 +239,256 @@ class Admin extends CI_Controller
 
     }
 
-
-
-
-
-///  logout 
-    public function logOut(){
+///  logout
+    public function logOut()
+    {
         $this->session->sess_destroy();
         redirect('login');
     }
 
-
-
-
-
-
-
-
-
-
-//// scrap data of categories and save to db 
-public function insertWindowsCategories() {
-    $jsonUrl = 'https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/navigation/ms-windows.json?slug=ms-windows';
-    $jsonData = file_get_contents($jsonUrl);
-    $data = json_decode($jsonData, true);
-    if ($data !== null && isset($data['pageProps']['category']['children'])) {
-        $extractedData = $this->processAndExtractData($data['pageProps']['category']['children'], "1");
-        // echo"<pre>";
-        // print_r($extractedData);
-    } else {
-        echo 'Error decoding JSON data.';
-    }
-}
-
-public function insertMacOsCategories() {
-    $jsonUrl = 'https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/navigation/macos.json?slug=macos';
-    $jsonData = file_get_contents($jsonUrl);
-    $data = json_decode($jsonData, true);
-    if ($data !== null && isset($data['pageProps']['category']['children'])) {
-        $extractedData = $this->processAndExtractData($data['pageProps']['category']['children'], "2");
-
-        // Print the extracted data
-        // echo"<pre>";
-        // print_r($extractedData);
-    } else {
-        echo 'Error decoding JSON data.';
-    }
-}
-
-public function insertAndroidCategories() {
-    $jsonUrl = 'https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/navigation/android.json?slug=android';
-    $jsonData = file_get_contents($jsonUrl);
-    $data = json_decode($jsonData, true);
-    if ($data !== null && isset($data['pageProps']['category']['children'])) {
-        $extractedData = $this->processAndExtractData($data['pageProps']['category']['children'][0]['children'], "3");
-
-        // Print the extracted data
-        // echo"<pre>";
-        // print_r($extractedData);
-    } else {
-        echo 'Error decoding JSON data.';
-    }
-}
-
-private function processAndExtractData($categoryData, $type) {
-    $extractedData = [];
-    foreach ($categoryData as $category) {
-        $name = $category['name'];
-        $slug = $category['slug'];
-        $slug_permanent = $category['slug_permanent'];
-        $title = $category['title'];
-        $description = $category['description'];
-
-        // Add data to the array
-        $extractedData[] = [
-            'name' => $name,
-            'slug' => $slug,
-            'slug_permanent' => $slug_permanent,
-            'title' => $title,
-            'description'  => $description,
-            'relation' => $type
-        ];
-    }
-    $this->db->insert_batch('category', $extractedData);
-    return $extractedData;
-}
-
-
-
-///// scrap data of softwares listing and save to db 
-
-public function getAllSoftwares($totalPage, $slug, $category_slug) {
-    $allData = [];	
-
-    for ($pageNumber = 1; $pageNumber <= $totalPage; $pageNumber++) {
-        $jsonData = $this->getSoftwares($pageNumber, $slug, $category_slug);
-
-        if ($jsonData !== false) {
-            $data = json_decode($jsonData, true);
-
-            if ($data !== null && isset($data['pageProps']['posts'])) {
-                $extractedData = $this->getData($data['pageProps']['posts']);
-                $allData = array_merge($allData, $extractedData);
-            } else {
-                echo 'Error decoding JSON data for page ' . $pageNumber . '.';
-            }
+//// scrap data of categories and save to db
+    public function insertWindowsCategories()
+    {
+        $jsonUrl = 'https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/navigation/ms-windows.json?slug=ms-windows';
+        $jsonData = file_get_contents($jsonUrl);
+        $data = json_decode($jsonData, true);
+        if ($data !== null && isset($data['pageProps']['category']['children'])) {
+            $extractedData = $this->processAndExtractData($data['pageProps']['category']['children'], "1");
+            // echo"<pre>";
+            // print_r($extractedData);
         } else {
-            echo 'Error fetching JSON data for page ' . $pageNumber . '.';
+            echo 'Error decoding JSON data.';
         }
     }
 
-    // Print or process the combined data
-    // echo "<pre>";
-    // print_r($allData);
-}
+    public function insertMacOsCategories()
+    {
+        $jsonUrl = 'https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/navigation/macos.json?slug=macos';
+        $jsonData = file_get_contents($jsonUrl);
+        $data = json_decode($jsonData, true);
+        if ($data !== null && isset($data['pageProps']['category']['children'])) {
+            $extractedData = $this->processAndExtractData($data['pageProps']['category']['children'], "2");
 
-private function getSoftwares($pageNumber, $slug, $category_slug) {
-    $jsonUrl = "https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/$slug/$category_slug.json?categorySlug=$slug&postSlug=$category_slug&page=" . $pageNumber;
-    $jsonData = file_get_contents($jsonUrl);
-
-    return $jsonData;
-}
-
-private function getData($softData) {
-    $extractedData = [];
-    foreach ($softData as $software) {
-        $title = isset($software['title']) ? $software['title'] : null;
-        $icon = isset($software['icon']) ? $software['icon'] : null;
-        $excerpt = isset($software['excerpt']) ? $software['excerpt'] : null;
-        $release_date = isset($software['release_date']) ? $software['release_date'] : null;
-        $slug = isset($software['slug']) ? $software['slug'] : null;
-        $downloads_count = isset($software['downloads_count']) ? $software['downloads_count'] : null;
-        $sub_category_slug = isset($software['categories']['subCategory']['slug_permanent']) ? $software['categories']['subCategory']['slug_permanent'] : null;
-        $sub_category_title = isset($software['categories']['subCategory']['name']) ? $software['categories']['subCategory']['name'] : null;
-        $category_slug = isset($software['categories']['primary']['slug_permanent']) ? $software['categories']['primary']['slug_permanent'] : null;
-        $download_size = isset($software['size']['value']) && isset($software['size']['unit']) ? $software['size']['value'].$software['size']['unit'] : null;
-        $badge = isset($software['badge']) ? $software['badge'] : null;
-
-
-        // Add data to the array
-        $extractedData[] = [
-            'title' => $title,
-            'icon' => $icon,
-            'excerpt' => $excerpt,
-            'sub_category_slug' => $sub_category_slug,
-            'sub_category_title' => $sub_category_title,
-            'category_slug' => $category_slug,
-            'release_date' => $release_date,
-            'slug' => $slug,
-            'downloads_count' => $downloads_count,
-            'download_size' => $download_size,
-            'badge' => $badge,
-        ];
-    }
-    $this->db->insert_batch('softwares', $extractedData);
-    return $extractedData;
-}
-
-
-
-
-
-///// scrap download link of softwares of android inside data and save to db 
-
-
-public function getAllSoftwaresofAndroid($totalPage, $slug) {
-    $allData = [];	
-
-    for ($pageNumber = 1; $pageNumber <= $totalPage; $pageNumber++) {
-        $jsonData = $this->getAndroidSoftwares($pageNumber, $slug);
-
-        if ($jsonData !== false) {
-            $data = json_decode($jsonData, true);
-
-            if ($data !== null && isset($data['pageProps']['posts'])) {
-                $extractedData = $this->getAndroidData($data['pageProps']['posts']);
-                $allData = array_merge($allData, $extractedData);
-            } else {
-                echo 'Error decoding JSON data for page ' . $pageNumber . '.';
-            }
+            // Print the extracted data
+            // echo"<pre>";
+            // print_r($extractedData);
         } else {
-            echo 'Error fetching JSON data for page ' . $pageNumber . '.';
+            echo 'Error decoding JSON data.';
         }
     }
 
-    // Print or process the combined data
-    // echo "<pre>";
-    print_r($allData);
-}
+    public function insertAndroidCategories()
+    {
+        $jsonUrl = 'https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/navigation/android.json?slug=android';
+        $jsonData = file_get_contents($jsonUrl);
+        $data = json_decode($jsonData, true);
+        if ($data !== null && isset($data['pageProps']['category']['children'])) {
+            $extractedData = $this->processAndExtractData($data['pageProps']['category']['children'][0]['children'], "3");
 
-private function getAndroidSoftwares($pageNumber, $slug) {
-    $jsonUrl = "https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/android/apps/$slug.json?page=$pageNumber";
-    $jsonData = file_get_contents($jsonUrl);
-    return $jsonData;
-}
-
-private function getAndroidData($softData) {
-    $extractedData = [];
-    foreach ($softData as $software) {
-        $title = $software['title'];
-        $icon = $software['icon'];
-        $excerpt = $software['excerpt'];
-        $release_date = $software['release_date'];
-        $slug = $software['slug'];
-        $downloads_count = $software['downloads_count'];
-        $sub_category_slug = $software['categories']['category']['slug_permanent'];
-        $sub_category_title = $software['categories']['category']['name'];
-        $category_slug = $software['categories']['primary']['slug_permanent'];
-        $download_size = $software['size']['value'].$software['size']['unit'] ;
-        $badge = $software['badge'] ;
-
-        // Add data to the array
-        $extractedData[] = [
-            'title' => $title,
-            'icon' => $icon,
-            'excerpt' => $excerpt,
-            'sub_category_slug' => $sub_category_slug,
-            'sub_category_title' => $sub_category_title,
-            'category_slug' => $category_slug,
-            'release_date' => $release_date,
-            'slug' => $slug,
-            'downloads_count' => $downloads_count,
-            'download_size' => $download_size,
-            'badge' => $badge,
-        ];
-    }
-    $this->db->insert_batch('softwares', $extractedData);
-    return $extractedData;
-}
-
-public function getlinks(){
-    $query = $this->db->select('id, slug, category_slug')->get('softwares');
-    $categories = $query->result_array();
-    foreach ($categories as $urldata) {
-        $data = $this->AdminModel->getSoftwareDetails($urldata['category_slug'],$urldata['slug']);
+            // Print the extracted data
+            // echo"<pre>";
+            // print_r($extractedData);
+        } else {
+            echo 'Error decoding JSON data.';
+        }
     }
 
-    // echo "<pre>";
-    // print_r($categories);  
-}
+    private function processAndExtractData($categoryData, $type)
+    {
+        $extractedData = [];
+        foreach ($categoryData as $category) {
+            $name = $category['name'];
+            $slug = $category['slug'];
+            $slug_permanent = $category['slug_permanent'];
+            $title = $category['title'];
+            $description = $category['description'];
 
+            // Add data to the array
+            $extractedData[] = [
+                'name' => $name,
+                'slug' => $slug,
+                'slug_permanent' => $slug_permanent,
+                'title' => $title,
+                'description' => $description,
+                'relation' => $type,
+            ];
+        }
+        $this->db->insert_batch('category', $extractedData);
+        return $extractedData;
+    }
+
+///// scrap data of softwares listing and save to db
+
+    public function getAllSoftwares($totalPage, $slug, $category_slug)
+    {
+        $allData = [];
+
+        for ($pageNumber = 1; $pageNumber <= $totalPage; $pageNumber++) {
+            $jsonData = $this->getSoftwares($pageNumber, $slug, $category_slug);
+
+            if ($jsonData !== false) {
+                $data = json_decode($jsonData, true);
+
+                if ($data !== null && isset($data['pageProps']['posts'])) {
+                    $extractedData = $this->getData($data['pageProps']['posts']);
+                    $allData = array_merge($allData, $extractedData);
+                } else {
+                    echo 'Error decoding JSON data for page ' . $pageNumber . '.';
+                }
+            } else {
+                echo 'Error fetching JSON data for page ' . $pageNumber . '.';
+            }
+        }
+
+        // Print or process the combined data
+        // echo "<pre>";
+        // print_r($allData);
+    }
+
+    private function getSoftwares($pageNumber, $slug, $category_slug)
+    {
+        $jsonUrl = "https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/$slug/$category_slug.json?categorySlug=$slug&postSlug=$category_slug&page=" . $pageNumber;
+        $jsonData = file_get_contents($jsonUrl);
+
+        return $jsonData;
+    }
+
+    private function getData($softData)
+    {
+        $extractedData = [];
+        foreach ($softData as $software) {
+            $title = isset($software['title']) ? $software['title'] : null;
+            $icon = isset($software['icon']) ? $software['icon'] : null;
+            $excerpt = isset($software['excerpt']) ? $software['excerpt'] : null;
+            $release_date = isset($software['release_date']) ? $software['release_date'] : null;
+            $slug = isset($software['slug']) ? $software['slug'] : null;
+            $downloads_count = isset($software['downloads_count']) ? $software['downloads_count'] : null;
+            $sub_category_slug = isset($software['categories']['subCategory']['slug_permanent']) ? $software['categories']['subCategory']['slug_permanent'] : null;
+            $sub_category_title = isset($software['categories']['subCategory']['name']) ? $software['categories']['subCategory']['name'] : null;
+            $category_slug = isset($software['categories']['primary']['slug_permanent']) ? $software['categories']['primary']['slug_permanent'] : null;
+            $download_size = isset($software['size']['value']) && isset($software['size']['unit']) ? $software['size']['value'] . $software['size']['unit'] : null;
+            $badge = isset($software['badge']) ? $software['badge'] : null;
+
+            // Add data to the array
+            $extractedData[] = [
+                'title' => $title,
+                'icon' => $icon,
+                'excerpt' => $excerpt,
+                'sub_category_slug' => $sub_category_slug,
+                'sub_category_title' => $sub_category_title,
+                'category_slug' => $category_slug,
+                'release_date' => $release_date,
+                'slug' => $slug,
+                'downloads_count' => $downloads_count,
+                'download_size' => $download_size,
+                'badge' => $badge,
+            ];
+        }
+        $this->db->insert_batch('softwares', $extractedData);
+        return $extractedData;
+    }
+
+///// scrap download link of softwares of android inside data and save to db
+
+    public function getAllSoftwaresofAndroid($totalPage, $slug)
+    {
+        $allData = [];
+
+        for ($pageNumber = 1; $pageNumber <= $totalPage; $pageNumber++) {
+            $jsonData = $this->getAndroidSoftwares($pageNumber, $slug);
+
+            if ($jsonData !== false) {
+                $data = json_decode($jsonData, true);
+
+                if ($data !== null && isset($data['pageProps']['posts'])) {
+                    $extractedData = $this->getAndroidData($data['pageProps']['posts']);
+                    $allData = array_merge($allData, $extractedData);
+                } else {
+                    echo 'Error decoding JSON data for page ' . $pageNumber . '.';
+                }
+            } else {
+                echo 'Error fetching JSON data for page ' . $pageNumber . '.';
+            }
+        }
+
+        // Print or process the combined data
+        // echo "<pre>";
+        print_r($allData);
+    }
+
+    private function getAndroidSoftwares($pageNumber, $slug)
+    {
+        $jsonUrl = "https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/android/apps/$slug.json?page=$pageNumber";
+        $jsonData = file_get_contents($jsonUrl);
+        return $jsonData;
+    }
+
+    private function getAndroidData($softData)
+    {
+        $extractedData = [];
+        foreach ($softData as $software) {
+            $title = $software['title'];
+            $icon = $software['icon'];
+            $excerpt = $software['excerpt'];
+            $release_date = $software['release_date'];
+            $slug = $software['slug'];
+            $downloads_count = $software['downloads_count'];
+            $sub_category_slug = $software['categories']['category']['slug_permanent'];
+            $sub_category_title = $software['categories']['category']['name'];
+            $category_slug = $software['categories']['primary']['slug_permanent'];
+            $download_size = $software['size']['value'] . $software['size']['unit'];
+            $badge = $software['badge'];
+
+            // Add data to the array
+            $extractedData[] = [
+                'title' => $title,
+                'icon' => $icon,
+                'excerpt' => $excerpt,
+                'sub_category_slug' => $sub_category_slug,
+                'sub_category_title' => $sub_category_title,
+                'category_slug' => $category_slug,
+                'release_date' => $release_date,
+                'slug' => $slug,
+                'downloads_count' => $downloads_count,
+                'download_size' => $download_size,
+                'badge' => $badge,
+            ];
+        }
+        $this->db->insert_batch('softwares', $extractedData);
+        return $extractedData;
+    }
+
+    public function getlinks()
+    {
+        $query = $this->db->select('id, slug, category_slug')->get('softwares');
+        $categories = $query->result_array();
+        foreach ($categories as $urldata) {
+            $data = $this->AdminModel->getSoftwareDetails($urldata['category_slug'], $urldata['slug']);
+        }
+
+        // echo "<pre>";
+        // print_r($categories);
+    }
+
+    public function getremaininglinks()
+    {
+        $categories = $this->db->select('softwares.id, softwares.slug, softwares.category_slug, softwaredata.slug as softwaredata_slug')
+            ->join('softwaredata', 'softwares.slug = softwaredata.slug', 'left')
+            ->where('softwaredata.slug IS NULL', null, false)
+            ->get('softwares')
+            ->result_array();
+
+        foreach ($categories as $urldata) {
+            $data = $this->AdminModel->getSoftwareDetails($urldata['category_slug'], $urldata['slug']);
+        }
+        // $categories = $query->result_array();
+        // $finaldata=[];
+        // foreach ($categories as $urldata) {
+        //     $finaldata[] = $urldata;
+
+        // }
+        // echo "<pre>";
+        // print_r($query);
+    }
 
 }

@@ -35,8 +35,6 @@ class GetQuery extends CI_Model {
         return array_values($organizedData);
     }
 
-
-
     public function getBlogs(){
         $this->db->select('*');
         $this->db->from('blogs');
@@ -66,8 +64,6 @@ class GetQuery extends CI_Model {
         return $result;
     }
     
-
-
     public function searchData($searchTerm) {
         if ($searchTerm !== null && is_string($searchTerm)) {
             $this->db->select('softdata.*, navbar.title as relation_name');
@@ -104,77 +100,29 @@ class GetQuery extends CI_Model {
         return $data;
     }
 
+    public function getProductDetails($softwareslug){
+        $softwareDataQuery = $this->db->select('*')
+        ->from('softwaredata')
+        ->where('slug', $softwareslug)
+        ->get();
 
+    $softwareData = $softwareDataQuery->row();  // Assuming you expect only one row
 
+    if ($softwareData) {
+        // If software data is found, perform a join with 'softwares' table
+        $joinedQuery = $this->db->select('softwares.*, softwaredata.*')
+            ->from('softwares')
+            ->join('softwaredata', 'softwaredata.slug = softwares.slug', 'left')
+            ->where('softwares.slug', $softwareslug)
+            ->get();
+        $result = $joinedQuery->result_array();
 
-///// scrap data of softwares inside data and save to db 
-
-    public function getSoftwareDetails($category_slug, $softwareslug) {
-        $url = "https://filecr.com/_next/data/LnRWXyXzsGeT0GM56c-0b/$category_slug/$softwareslug.json?categorySlug=$category_slug&postSlug=$softwareslug";
-        $jsonResponse = file_get_contents($url);
-        $data = json_decode($jsonResponse, true);
-        $allSoftData = $data["pageProps"]["post"];
-        $postId = $allSoftData["id"];
-        $existingRecord = $this->db->get_where('softwaredata', array('post_id' => $postId))->row_array();
-        if ($existingRecord) {
-            $finalRecord = $this->db
-                                ->select('softwaredata.*, softwares.*')  // Select columns from both tables
-                                ->from('softwaredata')
-                                ->join('softwares', 'softwaredata.slug = softwares.slug')
-                                ->where('softwaredata.post_id', $postId)
-                                ->get()
-            ->row_array();
-            // print_r($existingRecord);
-
-            return $finalRecord;
-            
-        } else {
-            $downloadurl = $this->getDownloadLink($allSoftData['downloads'][0]['links'][0]['id']);
-            $dataToInsert = array(
-                'post_id' => $allSoftData["id"],
-                'title' => $allSoftData["title"],
-                'extra_title' => $allSoftData["extra_title"],
-                'slug' => $allSoftData["slug"],
-                'excerpt' => $allSoftData["excerpt"],
-                'article' => $allSoftData["article"],
-                'license' => $allSoftData["license"],
-                'downloads_count' => $allSoftData["downloads_count"],
-                'seo_title' => $allSoftData["seo"]['title'],
-                'seo_description' => $allSoftData["seo"]['description'],
-                'creator_name' => $allSoftData["creators"][0]['name'],
-                'creator_url' => $allSoftData["creators"][0]['url'],
-                'version' => $allSoftData['downloads'][0]['version'],
-                'filename' => $allSoftData['downloads'][0]['filename'],
-                'releaseDate' => $allSoftData['downloads'][0]['releaseDate'],
-                'download_id' => $allSoftData['downloads'][0]['links'][0]['id'],
-                'download_url' => $downloadurl
-            );
-            $this->db->insert('softwaredata', $dataToInsert);  
-
-            $finalRecord = $this->db
-                                ->select('softwaredata.*, softwares.*')  // Select columns from both tables
-                                ->from('softwaredata')
-                                ->join('softwares', 'softwaredata.slug = softwares.slug')
-                                ->where('softwaredata.post_id', $postId)
-                                ->get()
-                                ->row_array();
-            // print_r($finalRecord);
-
-            return $finalRecord;
-            // echo"<pre>";
-        }
+    return $result;
+    } else {
+        return array();  // Return an empty array if no data is found
+    }
     }
 
-///// scrap download link of softwares inside data and save to db 
-    
-    private function getDownloadLink($id) {
-        $url = "https://filecr.com/api/actions/downloadlink/?id=$id";
-        $jsonResponse = file_get_contents($url);
-        $data = json_decode($jsonResponse, true);
-        $url = $data['url'];
-        return $url;
-    }
-    
 
 
 
