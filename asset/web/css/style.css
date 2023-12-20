@@ -1,0 +1,606 @@
+@import 'https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300;400;500;600;700&display=swap';
+body {
+    font-family: radio canada, sans-serif;
+    font-size: 13px;
+    background-color: #f0f2f5 !important
+}
+
+.ch-50 {
+    height: 50px
+}
+
+.steps-item-icon {
+    font-size: 33px;
+    width: 65px;
+    height: 65px;
+    min-width: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.notification-drop {
+    width: 352px
+}
+
+.notification-drop .img-fluid {
+    height: 42px
+}
+
+.osahan-item-list .d-flex.justify-content-between {
+    align-items: center
+}
+
+.like-btn a {
+    background: #ffebec;
+    color: #dc3545;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    line-height: 0;
+    font-size: 13px
+}
+
+.like-btn a:hover,
+.like-btn a:focus {
+    background: #dc3545;
+    color: #fff
+}
+
+.osahan-nav .navbar-brand img {
+    height: 40px
+}
+
+.osahan-nav .navbar-nav.me-auto .nav-item .nav-link {
+    font-size: 13px;
+    text-transform: uppercase;
+    padding: 24px 18px;
+    letter-spacing: .4px;
+    font-weight: 600
+}
+
+.dropdown-menu {
+    border-radius: .5rem;
+    padding: 5px
+}
+
+.dropdown-item {
+    font-size: 13px;
+    padding: 8px 13px;
+    border-radius: 5px
+}
+
+.top-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #005ae3
+}
+
+.messages-btn span.position-absolute.top-0.start-100.translate-middle.badge.rounded-pill.bg-danger {
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 0;
+    border-radius: 5px !important
+}
+
+.svg-border-rounded svg {
+    height: 3rem;
+    width: 100%
+}
+
+.border-radius-five {
+    border-radius: .5rem
+}
+
+.btn {
+    font-size: 14px;
+    min-height: 45px;
+    padding: 12px 16px;
+    text-transform: uppercase;
+    font-weight: 500 !important;
+    letter-spacing: .5px;
+    border-radius: .5rem
+}
+
+.btn:focus {
+    outline: none !important;
+    box-shadow: none !important
+}
+
+.btn-sm {
+    font-size: 13px;
+    padding: 9px 22px;
+    min-height: 40px !important
+}
+
+.btn-lg {
+    padding: 15px 40px;
+    font-size: 15px
+}
+
+.form-control {
+    font-size: 14px;
+    min-height: 45px;
+    padding: 8px 16px;
+    border-radius: .5rem;
+    outline: none !important;
+    box-shadow: none !important
+}
+
+.form-control-sm {
+    font-size: 13px;
+    min-height: 4px;
+    padding: 9px 15px;
+    border-radius: .5rem
+}
+
+.form-select {
+    font-size: 14px;
+    min-height: 45px;
+    padding: 8px 16px;
+    border-radius: .5rem
+}
+
+.footer-mid img.img-fluid {
+    height: 35px
+}
+
+.slick-track .slick-slide {
+    margin: 6px 8px
+}
+
+.slick-list {
+    margin: 0 -8px
+}
+
+.shadow-osahan {
+    -webkit-box-shadow: 0 1px 2px rgb(0 0 0/20%);
+    box-shadow: 0 1px 2px rgb(0 0 0/20%)
+}
+
+.rounded {
+    border-radius: 15px !important;
+    min-height: 180px;
+    max-height: 180px;
+    min-width: 200px
+
+}
+
+.card-img,
+.card-img-top {
+    border-top-left-radius: 9px !important;
+    border-top-right-radius: 9px !important
+}
+
+.card-img-top.rounded-lg {
+    border-radius: 9px !important
+}
+
+.card-img-top.rounded-0 {
+    border-radius: 9px !important
+}
+
+#links li a {
+    color: #000;
+    font-weight: 500;
+    font-size: 18px
+}
+
+#links li ul li a {
+    color: #696969;
+    font-size: 16px
+}
+
+#links li a:hover {
+    color: #696969
+}
+
+#links li ul li a:hover {
+    color: #000
+}
+
+.my-dropdown-toggle::after {
+    content: none
+}
+
+.background-image {
+    background: url(../img/nfts-hero.png);
+    background-size: cover;
+    display: flex;
+    align-items: center
+}
+
+.top-artistss .card-img-top {
+    height: 70px;
+    object-fit: cover
+}
+
+.profile {
+    width: 65px;
+    margin-top: -33px;
+    border: 4px solid #fff;
+    position: relative
+}
+
+.bluetick {
+    position: absolute;
+    top: 95px;
+    right: 0;
+    font-size: 17px;
+    left: 0;
+    margin: auto;
+    text-align: center;
+    width: 22px;
+    background: #fff;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 50px
+}
+
+.live-left-arrow {
+    position: absolute;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 99;
+    padding: 5px 10px;
+    border-radius: 100%;
+    background-color: #0e6dfd;
+    border: 1px solid rgb(14 109 253);
+    top: 45%;
+    left: -22px;
+    color: #fff;
+    -webkit-box-shadow: 0 1px 2px rgb(0 0 0/20%);
+    box-shadow: 0 1px 2px rgb(0 0 0/20%)
+}
+
+.live-right-arrow {
+    position: absolute;
+    cursor: pointer;
+    font-size: 20px;
+    z-index: 99;
+    padding: 5px 10px;
+    border-radius: 100%;
+    background-color: #0e6dfd;
+    border: 1px solid rgb(14 109 253);
+    top: 45%;
+    right: -22px;
+    color: #fff;
+    -webkit-box-shadow: 0 1px 2px rgb(0 0 0/20%);
+    box-shadow: 0 1px 2px rgb(0 0 0/20%)
+}
+
+.explore-tabs button {
+    border: none;
+    color: #0d6efd;
+    border-radius: 8px;
+    font-size: 13px;
+    background: #e8f1ff
+}
+
+.explore-tabs button:hover {
+    background: #0d6efd;
+    color: #fff
+}
+
+.explore-tabs button.active {
+    background: #0d6efd;
+    color: #fff
+}
+
+.activity-links a {
+    text-decoration: none;
+    color: #000;
+    font-weight: 500
+}
+
+.activity-card a>div:hover {
+    background-color: #f3f3f3
+}
+
+.activity-card-item .img-fluid {
+    height: 90px;
+    border-radius: 14px;
+    width: 90px
+}
+
+.activity-card-item {
+    position: relative
+}
+
+.activity-card-item .position-absolute {
+    font-size: 12px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid;
+    margin: 18px 19px;
+    border-radius: 10px !important
+}
+
+@media(min-width:480px) {
+    .help-tabs button {
+        padding: 35px
+    }
+}
+
+@media(min-width:780px) {
+    .help-tabs button {
+        padding: 30px;
+        margin: 0 5px
+    }
+}
+
+@media(min-width:1280px) {
+    .help-tabs button {
+        padding: 35px;
+        min-width: 204px
+    }
+}
+
+.help-tabs button {
+    border: none;
+    border-radius: 10px;
+    margin: 7px;
+    color: #696969;
+    background-color: #fff;
+    padding: 50px
+}
+
+.help-tabs button:hover {
+    color: #000
+}
+
+.help-tabs button.active {
+    background-color: #0d6efd;
+    color: #fff
+}
+
+.authors-card-list .card-img-top {
+    height: 170px;
+    object-fit: cover;
+    padding: 6px;
+    border-radius: 16px !important
+}
+
+.authors-card-list .rounded-circle {
+    height: 60px;
+    margin: -45px 0 0;
+    position: absolute;
+    right: 25px
+}
+
+.top-artistss {
+    position: relative
+}
+
+.auther-tabs button {
+    border: none;
+    color: #0d6efd;
+    border-radius: 8px;
+    font-size: 13px;
+    background: #fff;
+    -webkit-box-shadow: 0 1px 2px rgb(0 0 0/20%);
+    box-shadow: 0 1px 2px rgb(0 0 0/20%)
+}
+
+.auther-tabs button:hover {
+    background: #0d6efd;
+    color: #fff
+}
+
+.auther-tabs button.active {
+    background: #0d6efd;
+    color: #fff
+}
+
+.auther-tabs button span {
+    font-weight: 500;
+    margin: 0 0 0 11px;
+    font-size: 12px;
+    color: #999ea4 !important
+}
+
+.auther-tabs button.active span,
+.auther-tabs button:hover span {
+    color: #f6c244 !important
+}
+
+.followers-items .img-fluid {
+    height: 47px
+}
+
+.btn-icon {
+    font-size: 14px;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    min-height: 40px !important;
+    display: flex;
+    color: #0d6efd;
+    align-items: center;
+    justify-content: center
+}
+
+.author-sidebar .card-body.text-center img {
+    height: 160px;
+    margin: -122px 0 0
+}
+
+.feature {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width: 3rem;
+    font-size: 1.5rem
+}
+
+footer.footer h6.fw-bold {
+    font-size: 12px;
+    letter-spacing: 1px
+}
+
+footer.footer .nav-link {
+    padding: 6px 0;
+    color: #798187;
+    font-size: 13px
+}
+
+footer.footer .nav-link:hover,
+footer.footer .nav-link:focus {
+    color: #0e6dfd
+}
+
+footer.footer img.img-fluid {
+    height: 45px
+}
+
+.osahan-item-list .card-header .img-fluid {
+    height: 39px
+}
+
+.osahan-item-list .card-header .small.fw-bold {
+    font-size: 14px;
+    font-weight: 500 !important;
+    padding-left: 6px
+}
+
+.osahan-item-list img.card-img-top.rounded-lg {
+    height: 240px;
+    object-fit: cover
+}
+
+.sidebar-fix {
+    position: sticky;
+    top: 30px
+}
+
+.collection-btn .img-fluid {
+    height: 32px;
+    margin-bottom: 5px
+}
+
+.collection-btn .btn {
+    padding: 6px 0 12px 15px;
+    min-width: 120px
+}
+
+.coll-page .d-flex.gap-2 .card-img-top {
+    height: 106px;
+    width: 31.3%;
+    object-fit: cover
+}
+
+.rounded-start {
+    border-bottom-left-radius: 9px !important;
+    border-top-left-radius: 9px !important
+}
+
+.rounded-end {
+    border-top-right-radius: 9px !important;
+    border-bottom-right-radius: 9px !important
+}
+
+@media(max-width:576px) {}
+
+@media(max-width:768px) {}
+
+@media(max-width:992px) {
+    .navbar-toggler {
+        padding: 2px 5px;
+        background: #212529
+    }
+    .osahan-nav .navbar-nav.me-auto .nav-item .nav-link {
+        padding: 11px 18px;
+        text-align: center
+    }
+    .steps-item {
+        display: block !important;
+        text-align: center;
+        padding: 0 !important;
+        background: 0 0 !important;
+        box-shadow: none !important
+    }
+    .steps-item-icon {
+        margin: auto;
+        background: #212529 !important
+    }
+    .steps-item .fw-bold.fs-6.mb-1 {
+        margin: 12px 0 0;
+        font-size: 13px !important;
+        color: #fff;
+        font-weight: 400 !important
+    }
+    footer.footer.bg-white.py-5 h6.fw-bold {
+        margin-top: 39px !important
+    }
+    .filter-nav-page .row.justify-content-between.align-items-center {
+        display: block;
+        width: 100%;
+        margin: 0
+    }
+    .filter-nav-page .row.justify-content-between.align-items-center .col-2 {
+        width: 100%;
+        padding: 0
+    }
+    .filter-nav-page .row.justify-content-between.align-items-center .col-6 {
+        width: 100%;
+        padding: 9px 0 !important;
+        border-top: 1px solid #e2e4e6;
+        border-bottom: 1px solid #e2e4e6
+    }
+    .osahan-nav .navbar-nav.ms-auto.gap-3 li.nav-item.dropdown {
+        display: none
+    }
+    .help-tabs button {
+        padding: 24px;
+        min-width: 168px
+    }
+    .collection-btn .btn {
+        padding: 6px 0 12px 15px;
+        min-width: auto
+    }
+    .author-sidebar .card-body.text-center img {
+        height: 160px;
+        margin: 0
+    }
+}
+
+@media(min-width:1200px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 100%
+    }
+}
+
+@media(min-width:1400px) {
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1260px
+    }
+}

@@ -4,36 +4,67 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class GetQuery extends CI_Model {
 
     public function getNavData() {
-        $this->db->select('navbar.id AS nav_id, navbar.title AS nav_title, softdata.id AS subnav_id, softdata.name AS subnav_title');
-        $this->db->from('navbar');
-        $this->db->join('softdata', 'navbar.id = softdata.relation', 'left');
+        $this->db->select('navs.id As navs_id, navs.slug_permanent as navs_slug_permanent, navs.name As navs_name, category.name As category_name, category.slug_permanent As category_slug_permanent');
+        $this->db->from('navs');
+        $this->db->join('category', 'navs.id = category.relation', 'left');
         $query = $this->db->get();
         $result = $query->result_array();
-        $organizedData = [];
-
-        foreach ($result as $row) {
-            $navbarId = $row['nav_id'];
-            $subnavId = $row['subnav_id'];
-
-            if (!isset($organizedData[$navbarId])) {
-                $organizedData[$navbarId] = [
-                    'nav_id' => $navbarId,
-                    'nav_title' => $row['nav_title'],
-                    'subnav' => []
-                ];
+        $organizedData = array();
+        foreach ($result as $item) {
+            $osKey = strtolower($item['navs_slug_permanent']); 
+            if (!isset($organizedData[$osKey])) {
+                $organizedData[$osKey] = array(
+                    'navs_id' => $item['navs_id'],
+                    'navs_slug_permanent' => $item['navs_slug_permanent'],
+                    'navs_name' => $item['navs_name'],
+                    'categories' => array(),
+                );
             }
-            if (count($organizedData[$navbarId]['subnav']) < 6) {
-                if ($subnavId !== null) {
-                    $organizedData[$navbarId]['subnav'][] = [
-                        'subnav_id' => $subnavId,
-                        'subnav_title' => $row['subnav_title']
-                    ];
-                }
-            }
-        }   
+            $organizedData[$osKey]['categories'][] = array(
+                'category_name' => $item['category_name'],
+                'category_slug_permanent' => $item['category_slug_permanent'],
+            );
+        }
+    
+        return $organizedData;
+    }       
 
-        return array_values($organizedData);
+    public function get_top_random_categories($limit) {
+        $this->db->select('*');
+        $this->db->from('category');
+        $this->db->order_by('RAND()');
+        $this->db->limit($limit);
+
+        $query = $this->db->get();
+        return $query->result_array();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function getBlogs(){
         $this->db->select('*');

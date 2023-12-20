@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="102" height="102" viewBox="0 0 102 102">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #2d71f4;
+        stroke-linejoin: round;
+        stroke-width: 4px;
+      }
+
+      .cls-2 {
+        font-size: 78px;
+        font-family: "Future Z";
+      }
+
+      .cls-3 {
+        fill: #6f6f6f;
+        font-size: 58.299px;
+      }
+
+      .cls-4, .cls-6 {
+        fill: #f6c244;
+      }
+
+      .cls-5 {
+        fill: #2d71f4;
+      }
+
+      .cls-5, .cls-6 {
+        fill-rule: evenodd;
+      }
+
+      .cls-7 {
+        fill: #f32e06;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="51" cy="51" r="48"/>
+  <text id="edu_tree" data-name="edu tree" class="cls-2" transform="translate(512.936 -96.287) scale(0.714)">edu<tspan class="cls-3" x="0" dy="69.959">tree</tspan></text>
+  <rect class="cls-4" x="64.75" y="58.469" width="15.25" height="15.25"/>
+  <path id="Color_Fill_1" data-name="Color Fill 1" class="cls-5" d="M41.531,68.621c-0.034-5.542-.672-12.358.3-17.357,3.21-.243,8.891.133,12.569-0.3,1.131,2.207.6,6.977,0.6,10.175V84.482a1.3,1.3,0,0,0-.9.9c-1.964-1.239-5.584.013-8.379-.6-4.864-1.064-9.455-1.4-13.168-3.591A33.384,33.384,0,0,1,17.59,62.935c-4.245-12.35.831-27.459,5.985-34.416,6.072-8.2,22.291-17.215,37.707-11.971,13.143,4.471,25.2,16.6,25.138,34.116h-0.6c-1.679,1.062-11.547.333-14.365,0.3l-0.3-.3C71.418,33.483,51.645,24.854,38.239,34.8c-8.056,5.98-9.733,22.859-2.095,30.525C37.651,66.841,38.672,68.42,41.531,68.621Z"/>
+  <path class="cls-6" d="M64.783,58.467h15.43V73.9H64.783V58.467Z"/>
+  <rect id="Rounded_Rectangle_2" data-name="Rounded Rectangle 2" class="cls-7" x="-385" y="-156" width="102" height="102" rx="14" ry="14"/>
+  <rect id="Rounded_Rectangle_2_copy" data-name="Rounded Rectangle 2 copy" class="cls-7" x="-5" y="-144" width="67" height="67" rx="14" ry="14"/>
+</svg>

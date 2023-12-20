@@ -17,10 +17,11 @@ class Welcome extends CI_Controller {
 	public function index()	
 	{
 		$finalData['mainNav'] = $this->GetQuery->getNavData();
+		$finalData['topCategories'] = $this->GetQuery->get_top_random_categories(12);
 		$finalData['blogs'] = $this->GetQuery->getBlogs();
         $finalData['softwares'] = $this->GetQuery->gethomedata();
         // echo "<pre>";
-        // print_r($finalData['softwares']);
+        // print_r($finalData['mainNav']);
 		$this->load->view('index', $finalData);
 	}
 		
