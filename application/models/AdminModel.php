@@ -159,4 +159,54 @@ class AdminModel extends CI_Model
         return $url;
     }
 
+
+
+
+
+    public function updateScreenshot($category_slug, $softwareslug)
+{
+    try {
+        $url = "https://filecr.com/_next/data/k5jiiDh76bJXyz7YE0W0-/$category_slug/$softwareslug.json?categorySlug=$category_slug&postSlug=$softwareslug";
+        echo "<pre>";
+        print_r("Running for URL  =====>>>>" . $url);
+
+        $jsonResponse = file_get_contents($url);
+        if ($jsonResponse === false) {
+            throw new Exception("Failed to fetch data from $url");
+        }
+        $data = json_decode($jsonResponse, true);
+        $allSoftData = $data["pageProps"]["post"];
+        $postId = $allSoftData["id"];
+        $existingRecord = $this->db->get_where('softwaredata', array('post_id' => $postId))->row_array();
+
+        if ($existingRecord) {
+            $mediaKey = $allSoftData['media_files']['screenshots'][0]; // Use the icon URL as the media_key (you can change this as needed)
+
+            $dataToUpdate = array(
+                'screenshot' => $mediaKey, // Update media_key with the icon URL
+            );
+
+            $this->db->where('post_id', $postId);
+            $this->db->update('softwaredata', $dataToUpdate);
+
+            $finalRecord = $this->db
+                ->select('softwaredata.*, softwares.*') // Select columns from both tables
+                ->from('softwaredata')
+                ->join('softwares', 'softwaredata.slug = softwares.slug')
+                ->where('softwaredata.post_id', $postId)
+                ->get()
+                ->row_array();
+
+            print_r("Media Key Updated for the id =====>>>>" . $postId);
+            return $finalRecord;
+        } else {
+            // Handle the case where the record does not exist
+            print_r("No existing record found for the id =====>>>>" . $postId);
+            return null;
+        }
+    } catch (Exception $e) {
+        // Handle the error, log it, or simply continue to the next URL
+        echo "Error: " . $e->getMessage() . PHP_EOL;
+    }
+}
 }

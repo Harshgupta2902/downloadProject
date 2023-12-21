@@ -171,8 +171,8 @@ body {
 
 .rounded {
     border-radius: 15px !important;
-    min-height: 180px;
-    max-height: 180px;
+    /* min-height: 180px; */
+    /* max-height: 180px; */
     min-width: 200px
 
 }
@@ -483,7 +483,7 @@ footer.footer img.img-fluid {
 }
 
 .osahan-item-list img.card-img-top.rounded-lg {
-    height: 240px;
+    /* height: 240px; */
     object-fit: cover
 }
 

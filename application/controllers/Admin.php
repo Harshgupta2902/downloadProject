@@ -463,7 +463,7 @@ class Admin extends CI_Controller
         $query = $this->db->select('id, slug, category_slug')->get('softwares');
         $categories = $query->result_array();
         foreach ($categories as $urldata) {
-            $data = $this->AdminModel->getSoftwareDetails($urldata['category_slug'], $urldata['slug']);
+            $data = $this->AdminModel->updateScreenshot($urldata['category_slug'], $urldata['slug']);
         }
 
         // echo "<pre>";

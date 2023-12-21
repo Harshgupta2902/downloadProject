@@ -39,11 +39,87 @@ class GetQuery extends CI_Model {
         return $query->result_array();
     }
 
+    public function trending_softwares(){
+        $query = $this->db->query("SELECT softwares.*, softwaredata.* 
+                                    FROM `softwares` 
+                                    JOIN `softwaredata` ON softwares.slug = softwaredata.slug 
+                                    WHERE softwares.`badge` IS NOT NULL AND TRIM(softwares.`badge`) <> '' 
+                                    AND softwaredata.`screenshot` IS NOT NULL 
+                                    ORDER BY RAND() 
+                                    LIMIT 12");
+        $data = $query->result_array();
+        return $data;
+    }
 
 
+    public function top_softwares_by_os($osKey){
+        $query = $this->db->query("SELECT softwares.*, softwaredata.* 
+                                    FROM `softwares` 
+                                    JOIN `softwaredata` ON softwares.slug = softwaredata.slug 
+                                    WHERE softwares.`badge` IS NOT NULL AND TRIM(softwares.`badge`) <> '' 
+                                    AND softwaredata.`screenshot` IS NOT NULL 
+                                    AND softwares.`category_slug` = '$osKey'
+                                    ORDER BY RAND() 
+                                    LIMIT 12");
+        $data = $query->result_array();
+        return $data;
+    }
 
 
+    public function getProductDetails($softwareslug){
+        $softwareDataQuery = $this->db->select('*')
+        ->from('softwaredata')
+        ->where('slug', $softwareslug)
+        ->get();
 
+        $softwareData = $softwareDataQuery->row();  // Assuming you expect only one row
+
+        if ($softwareData) {
+            // If software data is found, perform a join with 'softwares' table
+            $joinedQuery = $this->db->select('softwares.*, softwaredata.*')
+                ->from('softwares')
+                ->join('softwaredata', 'softwaredata.slug = softwares.slug', 'left')
+                ->where('softwares.slug', $softwareslug)
+                ->get();
+            $result = $joinedQuery->result_array();
+
+        return $result[0];
+        } else {
+            return array();  // Return an empty array if no data is found
+        }
+    }
+
+    public function get_related_softwares($limit, $subcategorySlug){
+        $query = $this->db->query("SELECT softwares.*, softwaredata.* 
+                                    FROM `softwares` 
+                                    JOIN `softwaredata` ON softwares.slug = softwaredata.slug
+                                    WHERE softwares.sub_category_slug = '$subcategorySlug'
+                                    ORDER BY RAND() 
+                                    LIMIT $limit");
+        $data = $query->result_array();
+        return $data;
+    }
+
+    public function get_all_categories(){
+        $this->db->select('navs.slug_permanent as navs_slug_permanent, navs.name As navs_name, category.*');
+        $this->db->from('navs');
+        $this->db->join('category', 'navs.id = category.relation', 'left');
+        $query = $this->db->get();
+        $result = $query->result_array();
+    
+        $grouped_categories = array();
+    
+        // Group categories by operating system
+        foreach ($result as $category) {
+            $os = $category['navs_slug_permanent']; // Assuming there is a column named 'operating_system' in the 'category' table
+            if (!isset($grouped_categories[$os])) {
+                $grouped_categories[$os] = array();
+            }
+            $grouped_categories[$os][] = $category;
+        }
+    
+        return $grouped_categories;
+    }
 
 
 
@@ -131,28 +207,7 @@ class GetQuery extends CI_Model {
         return $data;
     }
 
-    public function getProductDetails($softwareslug){
-        $softwareDataQuery = $this->db->select('*')
-        ->from('softwaredata')
-        ->where('slug', $softwareslug)
-        ->get();
-
-    $softwareData = $softwareDataQuery->row();  // Assuming you expect only one row
-
-    if ($softwareData) {
-        // If software data is found, perform a join with 'softwares' table
-        $joinedQuery = $this->db->select('softwares.*, softwaredata.*')
-            ->from('softwares')
-            ->join('softwaredata', 'softwaredata.slug = softwares.slug', 'left')
-            ->where('softwares.slug', $softwareslug)
-            ->get();
-        $result = $joinedQuery->result_array();
-
-    return $result;
-    } else {
-        return array();  // Return an empty array if no data is found
-    }
-    }
+   
 
 
 

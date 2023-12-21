@@ -19,19 +19,57 @@ class Welcome extends CI_Controller {
 		$finalData['mainNav'] = $this->GetQuery->getNavData();
 		$finalData['topCategories'] = $this->GetQuery->get_top_random_categories(12);
 		$finalData['blogs'] = $this->GetQuery->getBlogs();
-        $finalData['softwares'] = $this->GetQuery->gethomedata();
+        $finalData['trending_softwares'] = $this->GetQuery->trending_softwares();
+        $finalData['windows'] = $this->GetQuery->top_softwares_by_os('windows');
+        $finalData['android'] = $this->GetQuery->top_softwares_by_os('android');
         // echo "<pre>";
-        // print_r($finalData['mainNav']);
+        // print_r($finalData['android']);
 		$this->load->view('index', $finalData);
 	}
-		
+
+
 	public function product($softwareslug){
 		$finalData['mainNav'] = $this->GetQuery->getNavData(); 
 		$finalData['softData'] = $this->GetQuery->getProductDetails($softwareslug);
+		$subCatQuery = $this->db->query("SELECT sub_category_slug FROM softwares WHERE slug='$softwareslug'");
+		$subCatResult = $subCatQuery->row(); // Fetch a single row
+		$subCat = $subCatResult->sub_category_slug; // Extract the sub_category_slug value
+		$finalData['related_softwares'] = $this->GetQuery->get_related_softwares(4, $subCat);
         // echo "<pre>";
-        // print_r($finalData['softData']);
+        // print_r($finalData['related_softwares']);
 		$this->load->view('product', $finalData);
 	}
+
+	public function categories(){
+		$categories['mainNav'] = $this->GetQuery->getNavData(); 
+		$categories['categories'] = $this->GetQuery->get_all_categories(); 
+		// echo "<pre>";
+        // print_r($categories['categories']);
+		$this->load->view('all_categories', $categories);
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function blog($id){
 		$finalData['mainNav'] = $this->GetQuery->getNavData();
