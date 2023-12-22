@@ -18,7 +18,6 @@ class Welcome extends CI_Controller {
 	{
 		$finalData['mainNav'] = $this->GetQuery->getNavData();
 		$finalData['topCategories'] = $this->GetQuery->get_top_random_categories(12);
-		$finalData['blogs'] = $this->GetQuery->getBlogs();
         $finalData['trending_softwares'] = $this->GetQuery->trending_softwares();
         $finalData['windows'] = $this->GetQuery->top_softwares_by_os('windows');
         $finalData['android'] = $this->GetQuery->top_softwares_by_os('android');
@@ -32,8 +31,8 @@ class Welcome extends CI_Controller {
 		$finalData['mainNav'] = $this->GetQuery->getNavData(); 
 		$finalData['softData'] = $this->GetQuery->getProductDetails($softwareslug);
 		$subCatQuery = $this->db->query("SELECT sub_category_slug FROM softwares WHERE slug='$softwareslug'");
-		$subCatResult = $subCatQuery->row(); // Fetch a single row
-		$subCat = $subCatResult->sub_category_slug; // Extract the sub_category_slug value
+		$subCatResult = $subCatQuery->row();
+		$subCat = $subCatResult->sub_category_slug;
 		$finalData['related_softwares'] = $this->GetQuery->get_related_softwares(4, $subCat);
         // echo "<pre>";
         // print_r($finalData['related_softwares']);
@@ -48,35 +47,50 @@ class Welcome extends CI_Controller {
 		$this->load->view('all_categories', $categories);
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    public function blog($id){
-		$finalData['mainNav'] = $this->GetQuery->getNavData();
-        $finalData['blogData'] = $this->GetQuery->getBlogData($id);
-		// print_r($finalData['blogData'][0]['image']);
-        $this->load->view('blog', $finalData);
+	public function search() {
+        $keyword = $this->input->get('keyword');
+		$data['mainNav'] = $this->GetQuery->getNavData(); 
+        $data['results'] = $this->GetQuery->searchSoftwares($keyword);
+		$data['searched'] = $keyword;
+		// echo "<pre>";
+        // print_r($data['results']);
+        $this->load->view('search', $data);
     }
+
+	public function getSoftwares($category){
+		$data['mainNav'] = $this->GetQuery->getNavData(); 
+		$data['catSoftwares'] = $this->GetQuery->get_category_softwares($category);
+		$data['name'] = $category;
+		// echo "<pre>";
+        // print_r($data['catSoftwares']);
+        $this->load->view('categories', $data);
+	}
+
+	public function softwares($os){
+		$data['mainNav'] = $this->GetQuery->getNavData(); 
+		$data['allSoftwares'] = $this->GetQuery->get_softwares_by_os($os);
+		$data['name'] = $os;
+		// echo "<pre>";
+        // print_r($data['allSoftwares']);
+        $this->load->view('softwares', $data);
+	}
+
+
+	public function blog(){
+		$data['mainNav'] = $this->GetQuery->getNavData(); 
+		$data['blogs'] = $this->GetQuery->get_blogs();
+		// echo "<pre>";
+        // print_r($data['blogs']);
+        $this->load->view('blog', $data);
+	}
+
+    // public function blog($id){
+	// 	$finalData['mainNav'] = $this->GetQuery->getNavData();
+    //     $finalData['blogData'] = $this->GetQuery->getBlogData($id);
+	// 	// print_r($finalData['blogData'][0]['image']);
+    //     $this->load->view('blog', $finalData);
+    // }
+
 
 	public function comments(){
 		$software_id =  $this->input->post('software_id');
@@ -90,35 +104,6 @@ class Welcome extends CI_Controller {
 		redirect('product/'.$software_id);
 		// print_r($data);
 	}
-	
-	// public function search(){
-	// 	$finalData['mainNav'] = $this->GetQuery->getNavData();
-	// 	$this->db->select('id, name, logo,relation ');
-    //         $this->db->from('softdata');
-    //         $query = $this->db->get();
-    //         $finalData['Data'] = $query->result_array();
-	// 	
-	// 	
-	// 	// $this->load->view('search', $finalData);
-	// }
-
-	public function search() {
-        $searchTerm = $this->input->get('search');
-		$finalData['mainNav'] = $this->GetQuery->getNavData();
-        $finalData['Data'] = $this->GetQuery->searchData($searchTerm);
-        // echo "<pre	>";print_r($finalData['Data']);
-        $this->load->view('search', $finalData);
-    }
-	
-    
-
-
-
-
-
-
-
-
 
 
 

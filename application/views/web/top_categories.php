@@ -8,7 +8,7 @@
         <div class="col-6 col-md-4 col-lg-2">
             <div class="top-artistss">
                 <div class="p-2 rounded shadow-osahan bg-white card border-0" style="min-height: 180px;max-height: 180px;">
-                    <a href="<?php echo base_url('categories') ?>" target="_blank" rel="noopener noreferrer">
+                    <a href="<?php echo base_url('getSoftwares/').urlencode($topCategories['slug']) ?>" target="_blank" rel="noopener noreferrer">
                         <img src="<?php echo base_url('asset/img/' . $topCategories['cover_image'] . '.jpg') ?>" class="card-img-top rounded-lg" alt="...">
                     </a>
                     <div class="card-body text-center py-1">

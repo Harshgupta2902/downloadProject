@@ -1,4 +1,4 @@
-<section class="background-image bg-primary py-5">
+<section class="bg-primary py-5">
     <h1 class="d-none">For SEO</h1>
     <div class="container py-4">
     <div class="row">

@@ -56,7 +56,10 @@ $route['translate_uri_dashes'] = FALSE;
 $route['product/(:any)'] = 'Welcome/product/$1';
 $route['categories'] = 'Welcome/categories';
 $route['blog/(:any)'] = 'Welcome/blog/$1';
+$route['getSoftwares/(:any)'] = 'Welcome/getSoftwares/$1';
+$route['softwares/(:any)'] = 'Welcome/softwares/$1';
 $route['search'] = 'Welcome/search';
+$route['blog'] = 'Welcome/blog';
 
 $route['login'] = 'Admin/login';
 $route['auth'] = 'Admin/auth';

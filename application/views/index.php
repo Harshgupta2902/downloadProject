@@ -15,6 +15,6 @@
          </div>
       </section>
       <?php $this->load->view('web/footer')?>
-     <?php $this->load->view('web/script') ?>
+     <?php $this->load->view('web/script')?>
    </body>
 </html>

@@ -1,7 +1,7 @@
 <div class="mt-5 mb-3">
     <div class="d-flex align-items-center justify-content-between mb-2 pb-1">
         <div class="h4 m-0 fw-bold">Top Windows Softwares ⚡</div>
-        <div><a href="explore.html" class="btn btn-outline-primary btn-sm px-3">See all</a></div>
+        <div><a href="<?php echo base_url('softwares/windows') ?>" class="btn btn-outline-primary btn-sm px-3">See all</a></div>
     </div>
     <div class="live-auctions">
         <?php foreach ($windows as $softwares) {?>
@@ -11,30 +11,30 @@
                 <div class="d-flex justify-content-between">
                     <div class="d-flex gap-2 align-items-center">
                         <div><img src="<?php echo $softwares['icon'] ?>" alt="#" class="img-fluid rounded-circle"></div>
-                        <div class="small fw-bold"><?php echo $softwares['sub_category_title'] ?> </div>
+                        <div class="small fw-bold"><?php echo $softwares['sub_category_title'] ?></div>
                     </div>
-                        <?php
-                        $osKey = $softwares['category_slug'];
-                            $osImage = '';
-                            switch ($osKey) {
-                                case 'android':
-                                    $osImage = 'android.png';
-                                    break;
-                                case 'mac':
-                                    $osImage = 'mac.gif';
-                                    break;
-                                case 'windows':
-                                    $osImage = 'windows.png';
-                                    break;
-                                default:
-                                    $osImage = '';
-                            }
+                            <?php
+                            $osKey = $softwares['category_slug'];
+                                $osImage = '';
+                                switch ($osKey) {
+                                    case 'android':
+                                        $osImage = 'android.png';
+                                        break;
+                                    case 'mac':
+                                        $osImage = 'mac.gif';
+                                        break;
+                                    case 'windows':
+                                        $osImage = 'windows.png';
+                                        break;
+                                    default:
+                                        $osImage = '';
+                                }
 
-                            if (!empty($osImage)) {
-                                $osImagePath = base_url() . 'asset/img/' . $osImage;
-                                echo '<img src="' . $osImagePath . '" alt="#" class="img-fluid">';
-                            }
-                        ?>
+                                if (!empty($osImage)) {
+                                    $osImagePath = base_url() . 'asset/img/' . $osImage;
+                                    echo '<img src="' . $osImagePath . '" alt="#" class="img-fluid">';
+                                }
+                            ?>
                 </div>
                 </div>
                 <a href="<?php echo base_url('product/').urlencode($softwares['slug']) ?>" target="_blank" rel="noopener noreferrer">
