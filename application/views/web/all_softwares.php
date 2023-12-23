@@ -75,7 +75,7 @@
          <div class="col-8 mx-auto">
             <div class="text-center">
                <img src="<?php echo base_url('asset/img/error.svg') ?>" class="img-fluid w-50 mb-4" alt="#">
-               <div class="fw-bold text-dark display-6 my-3">No Result Founf for '<?php echo $searched ?>'</div>
+               <div class="fw-bold text-dark display-6 my-3">No Result Found for '<?php echo $searched ?>'</div>
             </div>
          </div>
       </div>

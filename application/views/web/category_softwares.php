@@ -1,3 +1,5 @@
+<?php if (!empty($catSoftwares)) { ?>
+
 <section class="pt-5 bg-primary">
    <div class="container py-4 px-5 text-center">
       <div class="row gx-5 justify-content-center">
@@ -67,3 +69,20 @@
       </div>
    </div>
 </section>
+<?php } else { ?>
+
+<section class="py-5">
+   <div class="container py-4">
+      <div class="row justify-content-center">
+         <div class="col-8 mx-auto">
+            <div class="text-center">
+               <img src="<?php echo base_url('asset/img/error.svg') ?>" class="img-fluid w-50 mb-4" alt="#">
+               <div class="fw-bold text-dark display-6 my-3">No Softwares Found for '<?php echo $name ?>'</div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<?php } ?>
+

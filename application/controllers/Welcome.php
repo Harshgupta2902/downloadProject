@@ -79,8 +79,8 @@ class Welcome extends CI_Controller {
 	public function blog(){
 		$data['mainNav'] = $this->GetQuery->getNavData(); 
 		$data['blogs'] = $this->GetQuery->get_blogs();
-		// echo "<pre>";
-        // print_r($data['blogs']);
+			// echo "<pre>";
+			// print_r($data['blogs']);
         $this->load->view('blog', $data);
 	}
 

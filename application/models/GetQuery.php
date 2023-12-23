@@ -103,11 +103,25 @@ class GetQuery extends CI_Model
 
     private function getDownloadLink($id)
     {
-        $url = "https://filecr.com/api/actions/downloadlink/?id=$id";
-        $jsonResponse = file_get_contents($url);
-        $data = json_decode($jsonResponse, true);
-        $url = $data['url'];
-        return $url;
+        try {
+            $url = "https://filecr.com/api/actions/downloadlink/?id=$id";
+            $jsonResponse = file_get_contents($url);
+            
+            if ($jsonResponse === false) {
+                throw new Exception('Error fetching download link');
+            }
+
+            $data = json_decode($jsonResponse, true);
+
+            if (isset($data['url'])) {
+                return $data['url'];
+            } else {
+                throw new Exception('Invalid download link format');
+            }
+        } catch (Exception $e) {
+            // Log the error or handle it as needed
+            return null;
+        }
     }
 
     public function get_related_softwares($limit, $subcategorySlug)
