@@ -78,18 +78,21 @@ class Welcome extends CI_Controller {
 
 	public function blog(){
 		$data['mainNav'] = $this->GetQuery->getNavData(); 
-		$data['blogs'] = $this->GetQuery->get_blogs();
+		$data['blogs'] = $this->GetQuery->get_blogs(8);
 			// echo "<pre>";
 			// print_r($data['blogs']);
         $this->load->view('blog', $data);
 	}
 
-    // public function blog($id){
-	// 	$finalData['mainNav'] = $this->GetQuery->getNavData();
-    //     $finalData['blogData'] = $this->GetQuery->getBlogData($id);
-	// 	// print_r($finalData['blogData'][0]['image']);
-    //     $this->load->view('blog', $finalData);
-    // }
+    public function viewBlog($id){
+		$finalData['mainNav'] = $this->GetQuery->getNavData();
+        $finalData['blogData'] = $this->GetQuery->getBlogData($id);
+		$finalData['relatedBlogs'] = $this->GetQuery->get_blogs(3);
+
+		// echo "<pre>";	
+		// print_r($finalData['relatedBlogs']);
+		$this->load->view('blog_view', $finalData);
+    }
 
 
 	public function comments(){

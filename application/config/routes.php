@@ -58,6 +58,7 @@ $route['categories'] = 'Welcome/categories';
 $route['blog/(:any)'] = 'Welcome/blog/$1';
 $route['getSoftwares/(:any)'] = 'Welcome/getSoftwares/$1';
 $route['softwares/(:any)'] = 'Welcome/softwares/$1';
+$route['viewBlog/(:any)'] = 'Welcome/viewBlog/$1';
 $route['search'] = 'Welcome/search';
 $route['blog'] = 'Welcome/blog';
 

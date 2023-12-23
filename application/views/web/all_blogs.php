@@ -18,9 +18,10 @@
             <?php foreach ($blogs as $blogs) { ?>
                 <div class="col-lg-4 col-12">
                     <div class="p-4 rounded shadow-osahan bg-white card border-0">
-                        <a href="<?php base_url() ?>" target="_blank" rel="noopener noreferrer">
+                        <a href="<?php echo base_url('viewBlog/').urlencode($blogs['id']) ?>">
                             <img src="<?php echo $blogs['image']?>" class="card-img-top rounded-lg" alt="..."style="max-height: 200px;min-height:200px">
                         </a>
+                    
                         <div class="card-body px-0 pb-0 pt-4">
                             <div class="small text-muted">
                                 <span class="text-decoration-none text-danger fw-bold"><?php echo $blogs['category']?></span>&nbsp;.&nbsp;<?php echo $blogs['timestamp']?>

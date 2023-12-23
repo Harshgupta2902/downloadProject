@@ -199,25 +199,25 @@ class GetQuery extends CI_Model
         return $query->result_array();
     }
 
-    public function get_blogs()
+    public function get_blogs($limit)
     {
         $this->db->select('*');
         $this->db->from('blogs');
         $this->db->order_by('id', 'DESC');
-        $this->db->limit(8);
+        $this->db->limit($limit);
         $query = $this->db->get();
         $result = $query->result_array();
         return $result;
     }
 
-    // public function getBlogData($id)
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('blogs');
-    //     $this->db->where('id', $id);
-    //     $query = $this->db->get();
-    //     $result = $query->result_array();
-    //     return $result;
-    // }
+    public function getBlogData($id)
+    {
+        $this->db->select('*');
+        $this->db->from('blogs');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return $result;
+    }
 
 }
