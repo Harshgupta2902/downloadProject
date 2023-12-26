@@ -50,7 +50,7 @@
                                             </a>
                                         </div>
                                         <div>
-                                            <h6 class="mb-1"><?php echo strtoupper($softData['download_size'])?></h6>
+                                            <h6 class="mb-1"><?php echo strtoupper($relatedSoftwares['download_size'])?></h6>
                                             <div class="text-muted small"><?php echo $relatedSoftwares['downloads_count']. ' ' .'Downloads'?></div>
                                         </div>
                                     </div>

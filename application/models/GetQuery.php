@@ -105,7 +105,7 @@ class GetQuery extends CI_Model
     {
         try {
             $url = "https://filecr.com/api/actions/downloadlink/?id=$id";
-            $jsonResponse = file_get_contents($url);
+            $jsonResponse = @file_get_contents($url);
             
             if ($jsonResponse === false) {
                 throw new Exception('Error fetching download link');
@@ -219,5 +219,53 @@ class GetQuery extends CI_Model
         $result = $query->result_array();
         return $result;
     }
+
+
+
+    public function updateDownloadLink(){
+        $query = $this->db->query('SELECT download_id, download_url FROM softwaredata');
+        $data = $query->result_array();
+    
+        foreach ($data as $row) {
+            $id = $row['download_id'];
+            $currentDownloadUrl = $row['download_url'];
+
+    
+            try {
+                $url = "https://filecr.com/api/actions/downloadlink/?id=$id";
+                $jsonResponse = file_get_contents($url);
+
+               // Use regular expressions, assuming the URL is enclosed in double quotes
+                    if (preg_match('/"url":\s*"(.*?)"/', $jsonResponse, $matches)) {
+                        $downloadUrl = $matches[1];
+                        echo "Download URL: $downloadUrl";
+
+                        if ($downloadUrl !== $currentDownloadUrl){
+                            echo "Download URL for ID $id will be updated: $downloadUrl\n";
+                            if (isset($downloadUrl)) {
+                                // Update the download URL in the database
+                                $updateQuery = "UPDATE softwaredata SET download_url = ? WHERE download_id = ?";
+                                $this->db->query($updateQuery, array($downloadUrl, $id));
+                            } else {
+                                throw new Exception('Invalid download link format');
+                            }
+                        }
+                        else{
+                            echo "Download URL for ID $id is already up to date: $downloadUrl\n";
+
+                        }
+                    } else {
+                        echo "Error extracting download URL from JSON response.";
+                    }
+            } catch (Exception $e) {
+                // Log the error
+                $logMessage = "Error updating download ID $id\n";
+                // You can choose to continue processing other download IDs or stop the loop
+                // Continue with the loop for this example
+                continue;
+            }
+        }
+    }
+
 
 }

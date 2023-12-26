@@ -37,6 +37,7 @@ class Welcome extends CI_Controller {
         // echo "<pre>";
         // print_r($finalData['related_softwares']);
 		$this->load->view('product', $finalData);
+
 	}
 
 	public function categories(){
@@ -108,6 +109,12 @@ class Welcome extends CI_Controller {
 		// print_r($data);
 	}
 
+
+	public function updateDownloadLinks(){
+		$data = $this->GetQuery->updateDownloadLink();
+		echo "<pre>";	
+		print_r($data);
+	}
 
 
 }
