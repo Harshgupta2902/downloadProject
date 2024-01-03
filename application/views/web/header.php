@@ -15,3 +15,4 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/web/vendor/slick/slick-theme.min.css') ?>" />
 
 <link href="<?php echo base_url('asset/web/css/style.css') ?>" rel="stylesheet">
+<link href="<?php echo base_url('asset/web/css/loader.css') ?>" rel="stylesheet">
