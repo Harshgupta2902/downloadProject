@@ -69,6 +69,8 @@ class GetQuery extends CI_Model
         return $data;
     }
 
+
+
     public function getProductDetails($softwareslug)
     {
         $softwareDataQuery = $this->db->select('*')
@@ -79,15 +81,15 @@ class GetQuery extends CI_Model
         $softwareData = $softwareDataQuery->row(); // Assuming you expect only one row
 
         if ($softwareData) {
-            $downloadId = $softwareData->download_id;
-            $downloadLink = $this->getDownloadLink($downloadId);
+            // $downloadId = $softwareData->download_id;
+            // $downloadLink = $this->getDownloadLink($downloadId);
 
-            if ($downloadLink != $softwareData->download_url) {
-                // If the download link is different, update the download_url in the softwaredata table
-                $this->db->set('download_url', $downloadLink);
-                $this->db->where('slug', $softwareslug);
-                $this->db->update('softwaredata');
-            }
+            // if ($downloadLink != $softwareData->download_url) {
+            //     // If the download link is different, update the download_url in the softwaredata table
+            //     $this->db->set('download_url', $downloadLink);
+            //     $this->db->where('slug', $softwareslug);
+            //     $this->db->update('softwaredata');
+            // }
             // If software data is found, perform a join with 'softwares' table
             $joinedQuery = $this->db->select('softwares.*, softwaredata.*')
                 ->from('softwares')
@@ -101,28 +103,61 @@ class GetQuery extends CI_Model
         }
     }
 
-    private function getDownloadLink($id)
-    {
-        try {
-            $url = "https://filecr.com/api/actions/downloadlink/?id=$id";
-            $jsonResponse = @file_get_contents($url);
+
+    // public function getProductDetails($softwareslug)
+    // {
+    //     $softwareDataQuery = $this->db->select('*')
+    //         ->from('softwaredata')
+    //         ->where('slug', $softwareslug)
+    //         ->get();
+
+    //     $softwareData = $softwareDataQuery->row(); // Assuming you expect only one row
+
+    //     if ($softwareData) {
+    //         $downloadId = $softwareData->download_id;
+    //         $downloadLink = $this->getDownloadLink($downloadId);
+
+    //         if ($downloadLink != $softwareData->download_url) {
+    //             // If the download link is different, update the download_url in the softwaredata table
+    //             $this->db->set('download_url', $downloadLink);
+    //             $this->db->where('slug', $softwareslug);
+    //             $this->db->update('softwaredata');
+    //         }
+    //         // If software data is found, perform a join with 'softwares' table
+    //         $joinedQuery = $this->db->select('softwares.*, softwaredata.*')
+    //             ->from('softwares')
+    //             ->join('softwaredata', 'softwaredata.slug = softwares.slug', 'left')
+    //             ->where('softwares.slug', $softwareslug)
+    //             ->get();
+    //         $result = $joinedQuery->result_array();
+    //         return $result[0];
+    //     } else {
+    //         return array(); // Return an empty array if no data is found
+    //     }
+    // }
+
+    // private function getDownloadLink($id)
+    // {
+    //     try {
+    //         $url = "https://filecr.com/api/actions/downloadlink/?id=$id";
+    //         $jsonResponse = @file_get_contents($url);
             
-            if ($jsonResponse === false) {
-                throw new Exception('Error fetching download link');
-            }
+    //         if ($jsonResponse === false) {
+    //             throw new Exception('Error fetching download link');
+    //         }
 
-            $data = json_decode($jsonResponse, true);
+    //         $data = json_decode($jsonResponse, true);
 
-            if (isset($data['url'])) {
-                return $data['url'];
-            } else {
-                throw new Exception('Invalid download link format');
-            }
-        } catch (Exception $e) {
-            // Log the error or handle it as needed
-            return null;
-        }
-    }
+    //         if (isset($data['url'])) {
+    //             return $data['url'];
+    //         } else {
+    //             throw new Exception('Invalid download link format');
+    //         }
+    //     } catch (Exception $e) {
+    //         // Log the error or handle it as needed
+    //         return null;
+    //     }
+    // }
 
     public function get_related_softwares($limit, $subcategorySlug)
     {

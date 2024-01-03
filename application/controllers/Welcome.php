@@ -35,7 +35,7 @@ class Welcome extends CI_Controller {
 		$subCat = $subCatResult->sub_category_slug;
 		$finalData['related_softwares'] = $this->GetQuery->get_related_softwares(4, $subCat);
         // echo "<pre>";
-        // print_r($finalData['related_softwares']);
+        // print_r($finalData['softData']);
 		$this->load->view('product', $finalData);
 
 	}
